@@ -1,0 +1,109 @@
+.. -*-restructuredtext-*-
+
+
+==========================================
+Practical Django Projects (second edition)
+==========================================
+
+This is the source code for the applications covered in the second
+edition of "Practical Django Projects", published by Apress. If you do
+not have a copy of the book, this code may or may not be useful to you
+as a guide to learning Django, as all explanations of this code and
+the rationale behind it is contained solely within the text of the
+book.
+
+
+Obtaining a copy of Django
+==========================
+
+The second edition of "Practical Django Projects" was written with the
+upcoming Django 1.1 release in mind. However, the final release date
+of Django 1.1 will occur after the publication of this edition of the
+book. Until Django 1.1 is released, you will need to visit `the Django
+download page <http://www.djangoproject.com/download/>`_ and follow
+the instructions for obtaining the "development version". Once Django
+1.1 is released, simply follow the posted instructions for downloading
+and installing it.
+
+Also, note that Django development is an ongoing process and new
+releases of Django will be issued from time to time. If you are
+starting on the second edition of "Practical Django Projects" and the
+latest Django release is **newer** than 1.1 (e.g., Django 1.2, or a
+bugfix release like Django 1.1.1), you should download and install the
+latest officially-released version of Django instead of Django 1.1.
+
+
+About this code
+===============
+
+The online home of this code is at
+<http://bitbucket.org/ubernostrum/practical-django-projects/>, which
+hosts a version-controlled Mercurial repository containing the
+code. Chapter 11 of the book covers the topic of version control, and
+offers an extremely basic introduction to Mercurial; if you have
+Mercurial installed and would like to use it to obtain a copy of the
+code, simply type::
+
+    hg clone http://bitbucket.org/ubernostrum/practical-django-projects/
+
+Initially, each changeset in the repository represents a piece of code
+written or changed at a particular point in the book. Each commit
+message mentions the page number(s) in the book to which a given
+changeset corresponds, and Mercurial tags in the repository mark the
+start and end of each chapter.
+
+Also, it is expected that public access to this repository will be
+opened up before all code has been placed in the repository; if you
+find that you are browsing this repository before all of the code has
+been added, please be patient while the process of placing code in the
+repository is completed.
+
+Once the full code from the book has been checked in to this
+repository, further changesets will represent corrections and/or
+updates as needed; for example, if errors are found in the code as
+originally printed, changesets will be added to this repository to
+correct them.
+
+If you believe you have found an error in the book's code, please
+first check the latest copy of the code in the repository to determine
+whether a correction has already been made. If no correction is
+present in the repository, please consult Apress' errata page for the
+second edition of "Practical Django Projects" to view all current
+errata and submit suggested corrections:
+<http://www.apress.com/book/errata/1164>
+
+
+How this code is structured
+===========================
+
+"Practical Django Projects" covers three applications: a simple
+content-management system, a weblog, and a social code-sharing
+application. All code listed in the book for these applications is
+present in this repository, in Python modules corresponding to the
+names used in the book. Thus, for example, the CMS covered in Chapters
+1-3 can be found in the directory ``cms``.
+
+To correspond with the manner in which it is presented in the book,
+the ``cms`` directory contains the full project developed over the
+course of the first three chapters. For the remaining applications
+covered in the book, no project code is provided, only application
+code; as covered in the book's text, you should feel free to reuse the
+``cms`` project for the remaining applications, or to create new
+projects as desired.
+
+Templates covered in the book are present in the directory
+``templates``, organized in subdirectories corresponding to the
+sections of the book with which they are associated. Additional files
+(containing neither Python code nor templates) are present in the
+directory ``extras``.
+
+
+Differences between code in this repository and code in the book
+================================================================
+
+To ensure that a copy of the code in this repository can be run
+directly with a minimum of fuss, the settings file for the ``cms``
+project in this repository makes use of Python's ``os.path`` module to
+allow specifying the location of the SQLite database and template
+directory relative to the location of the ``cms`` directory. For
+details on this technique, consult Chapter 11 of the book.
