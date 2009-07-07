@@ -8,19 +8,29 @@
       <input type="text" name="q" id="id_q" />
       <input type="submit" value="Submit" /></p>
     </form>
-    {% if results %}
-      <p>You searched for "{{ query }}"; the results are listed below.</p>
-      <ul>
-        {% for page in results %}
+    {% if keyword_results or results %}
+      <p>You searched for "{{ query }}".</p>
+      {% if keyword_results %}
+        <p>Recommended pages:</p>
+        <ul>
+        {% for page in keyword_results %}
           <li><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></li>
         {% endfor %}
-      </ul>
-    {% else %}
-      {% if query %}
-        <p>No results found.</p>
-      {% else %}
-        <p>Type a search query into the box above, and press "Submit" to search.</p>
+        </ul>
       {% endif %}
+      {% if results %}
+        <p>Search results:</p>
+        <ul>
+          {% for page in results %}
+            <li><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endif %}
+    {% if query and not keyword_results and not results %}
+      <p>No results found.</p>
+    {% else %}
+      <p>Type a search query into the box above, and press "Submit" to search.</p>
     {% endif %}
   </body>
 </html>
