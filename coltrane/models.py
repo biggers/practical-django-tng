@@ -48,6 +48,7 @@ class Entry(models.Model):
     body_html = models.TextField(editable=False, blank=True)
 
     class Meta:
+        ordering = ['-pub_date']
         verbose_name_plural = "Entries"
 
     def save(self, force_insert=False, force_update=False):
