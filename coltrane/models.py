@@ -42,3 +42,5 @@ class Entry(models.Model):
     status = models.IntegerField(choices=STATUS_CHOICES, default=LIVE_STATUS)
     categories = models.ManyToManyField(Category)
     tags = TagField()
+    excerpt_html = models.TextField(editable=False, blank=True)
+    body_html = models.TextField(editable=False, blank=True)
