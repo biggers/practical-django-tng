@@ -47,6 +47,9 @@ class Entry(models.Model):
     excerpt_html = models.TextField(editable=False, blank=True)
     body_html = models.TextField(editable=False, blank=True)
 
+    class Meta:
+        verbose_name_plural = "Entries"
+
     def save(self, force_insert=False, force_update=False):
         self.body_html = markdown(self.body)
         if self.excerpt:
