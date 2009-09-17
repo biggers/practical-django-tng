@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Category(models.Model):
-    title = models.CharField(max_length=250)
+    title = models.CharField(max_length=250, help_text='Maximum 250 characters.')
     slug = models.SlugField(unique=True)
     description = models.TextField()
 
