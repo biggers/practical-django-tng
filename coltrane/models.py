@@ -21,6 +21,12 @@ class Category(models.Model):
         return "/categories/%s/" % self.slug
 
 
+STATUS_CHOICES = (
+    (1, 'Live'),
+    (2, 'Draft'),
+)
+
+
 class Entry(models.Model):
     title = models.CharField(max_length=250)
     excerpt = models.TextField(blank=True)
@@ -30,3 +36,4 @@ class Entry(models.Model):
     author = models.ForeignKey(User)
     enable_comments = models.BooleanField(default=True)
     featured = models.BooleanField(default=False)
+    status = models.IntegerField(choices=STATUS_CHOICES, default=1)
