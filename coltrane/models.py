@@ -39,3 +39,4 @@ class Entry(models.Model):
     enable_comments = models.BooleanField(default=True)
     featured = models.BooleanField(default=False)
     status = models.IntegerField(choices=STATUS_CHOICES, default=LIVE_STATUS)
+    categories = models.ManyToManyField(Category)
