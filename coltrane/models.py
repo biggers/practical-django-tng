@@ -22,4 +22,4 @@ class Entry(models.Model):
     excerpt = models.TextField(blank=True)
     body = models.TextField()
     pub_date = models.DateTimeField()
-    slug = models.SlugField()
+    slug = models.SlugField(unique_for_date='pub_date')
