@@ -29,3 +29,4 @@ class Entry(models.Model):
     slug = models.SlugField(unique_for_date='pub_date')
     author = models.ForeignKey(User)
     enable_comments = models.BooleanField(default=True)
+    featured = models.BooleanField(default=False)
