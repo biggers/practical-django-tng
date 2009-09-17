@@ -51,6 +51,9 @@ class Entry(models.Model):
         ordering = ['-pub_date']
         verbose_name_plural = "Entries"
 
+    def __unicode__(self):
+        return self.title
+
     def save(self, force_insert=False, force_update=False):
         self.body_html = markdown(self.body)
         if self.excerpt:
