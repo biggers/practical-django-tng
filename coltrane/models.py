@@ -22,3 +22,4 @@ class Entry(models.Model):
     excerpt = models.TextField(blank=True)
     body = models.TextField()
     pub_date = models.DateTimeField()
+    slug = models.SlugField()
