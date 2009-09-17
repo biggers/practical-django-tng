@@ -1,5 +1,7 @@
 import datetime
 
+from django.contrib.auth.models import User
+
 from django.db import models
 
 
@@ -25,3 +27,4 @@ class Entry(models.Model):
     body = models.TextField()
     pub_date = models.DateTimeField(default=datetime.datetime.now)
     slug = models.SlugField(unique_for_date='pub_date')
+    author = models.ForeignKey(User)
