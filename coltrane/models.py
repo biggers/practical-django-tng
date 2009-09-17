@@ -1,5 +1,7 @@
 import datetime
 
+from markdown import markdown
+
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -44,3 +46,9 @@ class Entry(models.Model):
     tags = TagField()
     excerpt_html = models.TextField(editable=False, blank=True)
     body_html = models.TextField(editable=False, blank=True)
+
+    def save(self, force_insert=False, force_update=False):
+        self.body_html = markdown(self.body)
+        if self.excerpt:
+            self.excerpt_html = markdown(self.excerpt)
+        super(Entry, self).save(force_insert, force_update)
