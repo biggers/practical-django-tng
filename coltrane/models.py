@@ -59,3 +59,6 @@ class Entry(models.Model):
         if self.excerpt:
             self.excerpt_html = markdown(self.excerpt)
         super(Entry, self).save(force_insert, force_update)
+
+    def get_absolute_url(self):
+        return "/weblog/%s/%s/" % (self.pub_date.strftime("%Y/%b/%d").lower(), self.slug)
