@@ -1,16 +1,17 @@
 import datetime
 
-from markdown import markdown
-
 from django.contrib.auth.models import User
 from django.db import models
 
+from markdown import markdown
 from tagging.fields import TagField
 
 
 class Category(models.Model):
-    title = models.CharField(max_length=250, help_text='Maximum 250 characters.')
-    slug = models.SlugField(unique=True, help_text="Suggested value automatically generated from title. Must be unique.")
+    title = models.CharField(max_length=250,
+                             help_text='Maximum 250 characters.')
+    slug = models.SlugField(unique=True,
+                            help_text="Suggested value automatically generated from title. Must be unique.")
     description = models.TextField()
 
     class Meta:
@@ -33,19 +34,31 @@ class Entry(models.Model):
         (DRAFT_STATUS, 'Draft'),
         (HIDDEN_STATUS, 'Hidden'),
     )
-    title = models.CharField(max_length=250)
-    excerpt = models.TextField(blank=True)
+
+    # Core fields.
+    title = models.CharField(max_length=250,
+                             help_text="Maximum 250 characters.")
+    excerpt = models.TextField(blank=True,
+                               help_text="A short summary of the entry. Optional.")
     body = models.TextField()
     pub_date = models.DateTimeField(default=datetime.datetime.now)
-    slug = models.SlugField(unique_for_date='pub_date')
+
+    # Fields to store generated HTML.
+    excerpt_html = models.TextField(editable=False, blank=True)
+    body_html = models.TextField(editable=False, blank=True)
+
+    # Metadata.
     author = models.ForeignKey(User)
     enable_comments = models.BooleanField(default=True)
     featured = models.BooleanField(default=False)
-    status = models.IntegerField(choices=STATUS_CHOICES, default=LIVE_STATUS)
+    slug = models.SlugField(unique_for_date='pub_date',
+                            help_text="Suggested value automatically generated from title. Must be unique for the publication date.")
+    status = models.IntegerField(choices=STATUS_CHOICES, default=LIVE_STATUS,
+                                 help_text="Only entries with live status will be publicly displayed.")
+
+    # Categorization.
     categories = models.ManyToManyField(Category)
-    tags = TagField()
-    excerpt_html = models.TextField(editable=False, blank=True)
-    body_html = models.TextField(editable=False, blank=True)
+    tags = TagField(help_text="Separate tags with spaces.")
 
     class Meta:
         ordering = ['-pub_date']
@@ -61,4 +74,5 @@ class Entry(models.Model):
         super(Entry, self).save(force_insert, force_update)
 
     def get_absolute_url(self):
-        return "/weblog/%s/%s/" % (self.pub_date.strftime("%Y/%b/%d").lower(), self.slug)
+        return "/weblog/%s/%s/" % (self.pub_date.strftime("%Y/%b/%d").lower(),
+                                   self.slug)
