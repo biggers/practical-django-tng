@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <title>Entries published in {{ year }}</title>
+  </head>
+  <body>
+    <h1>Entries published in {{ year }}</h1>
+    <ul>
+    {% for month in date_list %}
+      <li><a href="/weblog/{{ year }}/{{ month|date:"b" }}/">{{ month|date:"F" }}</a></li>
+    {% endfor %}
+    </ul>
+  </body>
+</html>

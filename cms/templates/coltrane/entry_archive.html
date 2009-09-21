@@ -1,10 +1,10 @@
 <html>
   <head>
-    <title>Entries index</title>
+    <title>Entries</title>
   </head>
   <body>
-    <h1>Entries index</h1>
-    {% for entry in entry_list %}
+    <h1>Entries</h1>
+    {% for entry in latest %}
       <h2>{{ entry.title }}</h2>
       <p>Published on {{ entry.pub_date|date:"F j, Y" }}</p>
       {% if entry.excerpt_html %}
