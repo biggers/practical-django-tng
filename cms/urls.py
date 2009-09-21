@@ -1,7 +1,13 @@
 from django.conf.urls.defaults import *
-
-# Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+
+from coltrane.models import Entry
+
+entry_info_dict = {
+    'queryset': Entry.objects.all(),
+    'date_field': 'pub_date',
+}
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -18,6 +24,8 @@ urlpatterns = patterns('',
      { 'document_root': '/Users/jbennett/Sites/tiny_mce/' }),
     (r'^search/$', 'cms.search.views.search'),
     (r'^weblog/$', 'coltrane.views.entries_index'),
-    (r'^weblog/(?P<year>\d{4})/(?P<month>\w{3})/(?P<day>\d{2})/(?P<slug>[-\w]+)/', 'coltrane.views.entry_detail'),
+    (r'^weblog/(?P<year>\d{4})/(?P<month>\w{3})/(?P<day>\d{2})/(?P<slug>[-\w]+)/',
+     'django.views.generic.date_based.object_detail',
+     entry_info_dict),
     (r'', include('django.contrib.flatpages.urls')),
 )
