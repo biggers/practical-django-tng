@@ -86,3 +86,24 @@ class Link(models.Model):
     description = models.TextField(blank=True)
     description_html = models.TextField(blank=True)
     url = models.URLField(unique=True)
+    posted_by = models.ForeignKey(User)
+    pub_date = models.DateTimeField(default=datetime.datetime.now)
+    slug = models.SlugField(unique_for_date='pub_date')
+    tags = TagField()
+    enable_comments = models.BooleanField(default=True)
+    post_elsewhere = models.BooleanField('Post to Delicious', default=True)
+    via_name = models.CharField('Via', max_length=250, blank=True,
+                                help_text='The name of the person whose site you spotted the link on. Optional.')
+    via_url = models.URLField('Via URL', blank=True,
+                              help_text='The URL of the site where you spotted the link. Optional.')
+
+    class Meta:
+        ordering = ['-pub_date']
+
+    def __unicode__(self):
+        return self.title
+
+    def save(self, force_insert=False, force_update=False):
+        if self.description:
+            self.description_html = markdown(self.description)
+        super(Link, self).save()
