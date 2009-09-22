@@ -107,4 +107,10 @@ class Link(models.Model):
     def save(self, force_insert=False, force_update=False):
         if self.description:
             self.description_html = markdown(self.description)
+        if not self.id and self.post_elsewhere:
+            import pydelicious
+            from django.utils.encoding import smart_str
+            pydelicious.add(settings.DELICIOUS_USER, settings.DELICIOUS_PASSWORD,
+                            smart_str(self.url), smart_str(self.title),
+                            smart_str(self.tags))
         super(Link, self).save()
