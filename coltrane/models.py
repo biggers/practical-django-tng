@@ -114,3 +114,10 @@ class Link(models.Model):
                             smart_str(self.url), smart_str(self.title),
                             smart_str(self.tags))
         super(Link, self).save()
+
+    def get_absolute_url(self):
+        return ('coltrane_link_detail', (), { 'year': self.pub_date.strftime('%Y'),
+                                              'month': self.pub_date.strftime('%b').lower(),
+                                              'day': self.pub_date.strftime('%d'),
+                                              'slug': self.slug })
+    get_absolute_url = models.permalink(get_absolute_url)
