@@ -79,3 +79,10 @@ class Entry(models.Model):
                                                'day': self.pub_date.strftime("%d"),
                                                'slug': self.slug })
     get_absolute_url = models.permalink(get_absolute_url)
+
+
+class Link(models.Model):
+    title = models.CharField(max_length=250)
+    description = models.TextField(blank=True)
+    description_html = models.TextField(blank=True)
+    url = models.URLField(unique=True)
