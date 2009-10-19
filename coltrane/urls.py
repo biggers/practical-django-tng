@@ -55,3 +55,8 @@ urlpatterns = patterns('django.views.generic.date_based',
      link_info_dict,
      'coltrane_link_detail'),
 )
+
+urlpatterns += patterns('coltrane.views',
+    (r'^categories/$', 'category_list'),
+    (r'^categories/(?P<slug>[-w]+)/$', 'category_detail'),
+)
