@@ -1,5 +1,7 @@
 from django.conf.urls.defaults import *
 
+from tagging.models import Tag
+
 from coltrane.models import Category, Entry, Link
 
 entry_info_dict = {
@@ -62,4 +64,10 @@ urlpatterns += patterns('',
      { 'queryset': Category.objects.all() }),
     (r'^categories/(?P<slug>[-w]+)/$',
      'coltrane.views.category_detail'),
+)
+
+urlpatterns += patterns('',
+    (r'^tags/$',
+     'django.views.generic.list_detail.object_list',
+     { 'queryset': Tag.objects.all() }),
 )
