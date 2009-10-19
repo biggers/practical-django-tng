@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import *
 
-from coltrane.models import Entry, Link
+from coltrane.models import Category, Entry, Link
 
 entry_info_dict = {
     'queryset': Entry.objects.all(),
@@ -56,7 +56,10 @@ urlpatterns = patterns('django.views.generic.date_based',
      'coltrane_link_detail'),
 )
 
-urlpatterns += patterns('coltrane.views',
-    (r'^categories/$', 'category_list'),
-    (r'^categories/(?P<slug>[-w]+)/$', 'category_detail'),
+urlpatterns += patterns('',
+    (r'^categories/$',
+     'django.views.generic.list_detail.object_list',
+     { 'queryset': Category.objects.all() }),
+    (r'^categories/(?P<slug>[-w]+)/$',
+     'coltrane.views.category_detail'),
 )

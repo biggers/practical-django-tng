@@ -3,10 +3,6 @@ from django.shortcuts import get_object_or_404, render_to_response
 from coltrane.models import Category
 
 
-def category_list(request):
-    return render_to_response('coltrane/category_list.html',
-                              { 'object_list': Category.objects.all() })
-
 def category_detail(request, slug):
     category = get_object_or_404(Category, slug=slug)
     return render_to_response('coltrane/category_detail.html',
