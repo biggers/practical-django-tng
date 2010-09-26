@@ -21,9 +21,9 @@
 {% block whatis %}
     <p>This is a link published on {{ object.pub_date|date:"F j, Y" }}.</p>
     
-    {% if object.tags.count %}
+    {% if object.etags.count %}
         <p>This link is tagged with 
-            {% for tag in object.tags %}
+            {% for tag in object.etags %}
                 <a href="{% url coltrane_link_archive_tag tag.name %}">{{ tag.name }}</a>
                 {% if forloop.last %}{% else %}
                     {% ifequal forloop.revcounter0 1 %}and {% else %}, {% endifequal %}
