@@ -1,0 +1,5 @@
+From: {{ comment.name }}
+
+-----
+{{ comment.comment }}
+-----

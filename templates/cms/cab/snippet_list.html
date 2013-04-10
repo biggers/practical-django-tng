@@ -1,0 +1,31 @@
+{% extends "cab/base.html" %}
+
+{% block title %} | Snippets{% endblock %}
+
+
+{% block content %}
+    <h2>Snippets</h2>
+    
+    {% if object_list %}
+        <ul>
+        {% for snippet in object_list %}
+            <li><a href="{{ snippet.get_absolute_url }}">{{ snippet.title }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no Snippets to display.</p>
+    {% endif %}
+    
+    <!-- Tweaks from http://www.protocolostomy.com/2009/08/09/django-pygments-templates-code-sharing-and-design/ -->
+    <p>
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">Previous page</a>
+    {% endif %}
+    {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Next page</a>
+    {% endif %}
+    </p>
+    
+{% endblock %}
+

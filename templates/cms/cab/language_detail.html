@@ -1,0 +1,18 @@
+{% extends "cab/base.html" %}
+
+{% block title %} | Language | {{ language.name }}{% endblock %}
+
+
+{% block content %}
+    <h2>{{ language.name }}</h2>
+
+    {% if object_list %}
+        {% for snippet in object_list %}
+          <p><a href="{{ snippet.get_absolute_url }}">{{ snippet.title }}</a></p>
+         {% endfor %}
+    {% else %}
+        <p>There are no Snippets to display.</p>
+    {% endif %}
+
+{% endblock %}
+

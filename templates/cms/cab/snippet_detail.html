@@ -1,0 +1,55 @@
+{% extends "cab/base.html" %}
+
+{% block title %} | Snippet | {{ object.title }}{% endblock %}
+
+
+{% block content %}
+    <h2>{{ object.title }}</h2>
+
+    <ul>
+    <li>Published: {{ object.pub_date }}</li>
+    <li>Updated: {{ object.updated_date }}</li>
+    <li>Language:  <a href="{{ object.language.get_absolute_url }}">{{ object.language }}</a></li>
+    <li>Author: {{ object.author }}</li>
+    <li>Tags: 
+        {% if object.etags.count %}
+                {% for tag in object.etags %}
+                    <a href="{% url cab_snippet_archive_tag tag.name %}">{{ tag.name }}</a>
+                    {% if forloop.last %}{% else %}
+                        {% ifequal forloop.revcounter0 1 %}and {% else %}, {% endifequal %}
+                    {% endif %}
+                {% endfor %}
+        {% else %}
+            This Snippet doesn't have any tags.
+        {% endif %}
+    </li>
+    </ul>
+    
+    {% load snippets %}
+    {% if_bookmarked user object %}
+        <form method="post" action="{% url cab_bookmark_delete object.id %}">
+            <p><input type="submit" value="Delete bookmark"></p>
+        </form>
+    {% else %}
+        <p><a href="{% url cab_bookmark_add object.id %}">Add bookmark</a></p>
+    {% endif_bookmarked %}
+    
+    {% if_rated user object %}
+        {% get_rating user object as rating %}
+        <p>You rated this snippet {{ rating.get_rating_display }}.</p>
+    {% else %}
+        <p>Rate this snippet:
+            <a href="{% url cab_snippet_rate object.id %}?rating=1">useful</a> or 
+            <a href="{% url cab_snippet_rate object.id %}?rating=-1">not useful</a>.</p>  
+    {% endif_rated %}
+    
+    {% load markup %}
+    
+    <p>{{ object.description_html|markdown }}</p>
+    
+    <p>
+    {{ object.highlighted_code|markdown }}
+    </p>
+
+{% endblock %}
+

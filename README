@@ -1,6 +1,5 @@
 .. -*-restructuredtext-*-
 
-
 ==========================================
 Practical Django Projects (second edition)
 ==========================================
@@ -107,3 +106,56 @@ project in this repository makes use of Python's ``os.path`` module to
 allow specifying the location of the SQLite database and template
 directory relative to the location of the ``cms`` directory. For
 details on this technique, consult Chapter 11 of the book.
+
+
+UPDATE: Phil Gyford’s additions to "PDJP 2ed"
+=============================================
+
+ James Bennett, original source / repo:
+  https://bitbucket.org/ubernostrum/practical-django-projects/src
+
+ Phil Gyford’s additions to, changes to:
+   https://bitbucket.org/philgyford/practical-django-projects/src
+
+This is an unofficial set of files for James Bennett's 'Practical
+Django Projects' Second Edition, published by Apress. I have no
+connection with the author, the book or the publisher, but in the
+absence of any official example files I thought my finished set might
+be useful.
+
+I have tracked down fixes for most of the things that don't work from
+the book, and added templates where examples are missing. Most things
+seem to work fine for me, but I can't guarantee it will work for you. 
+I've added a couple of things not covered in the book (like a home
+page for the code sharing site) to make things easier.
+
+These files aren't designed to work as standalone applications -- they
+will probably need configuration and set-up, and assume you're
+following along with the book's tutorials and might just need a
+reference copy of the code.
+
+Here are some things that don't work / might not work / will need
+attention:
+
+General
+--------
+
+* You'll need to do some configuration in cms/settings.py
+* No SQLite database is included -- the code should create one at cms/cms.db
+
+Coltrane
+--------
+
+* In the weblog app, I'm not sure if Akismet works (it doesn't complain)
+* In the weblog, sending emails after a comment is posted might not work (no complaint, but email doesn't seem to arrive when sent from my laptop)
+* The bit that sends an email notification when a comment is posted needs a template at comments/comment_notification_email.txt so I've put that outside of the templates/cms/coltrane/ directory, inside templates/cms/.
+* Setting up the tagging is problematic. This code currently works fine, but you may need to manually add the 'tags' column to your tables.
+
+ http://blog.sveri.de/2009/08/13/semi-automatic-tagging-with-django-and-django-tagging/
+
+I can't guarantee to ever update this code or supply help with problems (I hardly know what I'm doing myself) and would welcome any thoughts on things I've done terribly wrong. Feel free to post comments here: 
+
+ http://www.gyford.com/phil/writing/2010/01/14/django.php
+
+Phil Gyford
+http://www.gyford.com/

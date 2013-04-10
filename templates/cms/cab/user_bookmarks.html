@@ -1,0 +1,31 @@
+{% extends "cab/base.html" %}
+
+{% block title %} | Your Bookmarks{% endblock %}
+
+
+{% block content %}
+    <h2>Your Bookmarks</h2>
+
+    {% if object_list %}
+        <ol>
+        {% for bookmark in object_list %}
+            <li><a href="{{ bookmark.snippet.get_absolute_url }}">{{ bookmark.snippet.title }}</a></li>
+        {% endfor %}
+        </ol>
+    {% else %}
+        <p>There are no Snippets to display.</p>
+    {% endif %}
+    
+    <!-- Tweaks from http://www.protocolostomy.com/2009/08/09/django-pygments-templates-code-sharing-and-design/ -->
+    <p>
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">Previous page</a>
+    {% endif %}
+    {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Next page</a>
+    {% endif %}
+    </p>
+    
+{% endblock %}
+

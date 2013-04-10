@@ -1,31 +1,41 @@
 from django.conf.urls.defaults import *
 from django.contrib import admin
-
-from coltrane.models import Entry
-
-entry_info_dict = {
-    'queryset': Entry.objects.all(),
-    'date_field': 'pub_date',
-}
-
+import settings # Needed for PROJECT_ROOT.
 admin.autodiscover()
 
+from coltrane.feeds import CategoryFeed, LatestEntriesFeed
+
+feeds = { 'entries': LatestEntriesFeed,
+          'categories': CategoryFeed }
+
+
 urlpatterns = patterns('',
-    # Example:
-    # (r'^cms/', include('cms.foo.urls')),
-
-    # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
-    # to INSTALLED_APPS to enable admin documentation:
-    # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
-    (r'^tiny_mce/(?P<path>.*)$', 'django.views.static.serve',
-     { 'document_root': '/Users/jbennett/Sites/tiny_mce/' }),
+    
+    (r'^tiny_mce/(?P<path>.*)$', 'django.views.static.serve', 
+        { 'document_root': settings.PROJECT_ROOT + '/js/tiny_mce/' }),
+
     (r'^search/$', 'cms.search.views.search'),
+    
+    (r'^comments/', include('django.contrib.comments.urls')),
+    
     (r'^weblog/categories/', include('coltrane.urls.categories')),
     (r'^weblog/links/', include('coltrane.urls.links')),
     (r'^weblog/tags/', include('coltrane.urls.tags')),
     (r'^weblog/', include('coltrane.urls.entries')),
+    
+    (r'^weblog/feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', { 'feed_dict': feeds }),
+     
+    (r'^codeshare/', include('cab.urls.home')),
+    (r'^codeshare/snippets/', include('cab.urls.snippets')),
+    (r'^codeshare/languages/', include('cab.urls.languages')),
+    (r'^codeshare/popular/', include('cab.urls.popular')),
+    (r'^codeshare/tags/', include('cab.urls.tags')),
+    (r'^codeshare/bookmarks/', include('cab.urls.bookmarks')),
+    (r'^codeshare/ratings/', include('cab.urls.ratings')),
+    
+    (r'^codeshare/css/(?P<path>.*)$', 'django.views.static.serve',
+        { 'document_root': settings.PROJECT_ROOT + '/../cab/css/' }),
+ 
     (r'', include('django.contrib.flatpages.urls')),
 )
