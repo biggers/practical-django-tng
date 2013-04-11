@@ -8,12 +8,14 @@ from coltrane.feeds import CategoryFeed, LatestEntriesFeed
 feeds = { 'entries': LatestEntriesFeed,
           'categories': CategoryFeed }
 
-
 urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     
-    (r'^tiny_mce/(?P<path>.*)$', 'django.views.static.serve', 
-        { 'document_root': settings.PROJECT_ROOT + '/js/tiny_mce/' }),
+    (r'^tinymce/', include('tinymce.urls')),
+    (r'^tiny_mce/', include('tinymce.urls')),
+
+    # (r'^tiny_mce/(?P<path>.*)$', 'django.views.static.serve', 
+    #     { 'document_root': settings.PROJECT_ROOT + '/js/tiny_mce/' }),
 
     (r'^search/$', 'cms.search.views.search'),
     
@@ -24,7 +26,7 @@ urlpatterns = patterns('',
     (r'^weblog/tags/', include('coltrane.urls.tags')),
     (r'^weblog/', include('coltrane.urls.entries')),
     
-    (r'^weblog/feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', { 'feed_dict': feeds }),
+    (r'^weblog/feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.Feed', { 'feed_dict': feeds }),
      
     (r'^codeshare/', include('cab.urls.home')),
     (r'^codeshare/snippets/', include('cab.urls.snippets')),

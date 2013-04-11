@@ -1,7 +1,7 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.feedgenerator import Atom1Feed
 from django.contrib.sites.models import Site
-from django.contrib.syndication.feeds import Feed
+from django.contrib.comments.feeds import Feed
 from coltrane.models import Category, Entry, Link
 
 current_site = Site.objects.get_current()

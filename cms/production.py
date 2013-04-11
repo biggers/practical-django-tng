@@ -1,0 +1,2 @@
+
+from cms.settings import *
