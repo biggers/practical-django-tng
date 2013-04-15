@@ -1,43 +1,47 @@
-from django.conf.urls.defaults import *
+import os
+from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
-import settings # Needed for PROJECT_ROOT.
-admin.autodiscover()
 
+import settings
 from coltrane.feeds import CategoryFeed, LatestEntriesFeed
 
-feeds = { 'entries': LatestEntriesFeed,
-          'categories': CategoryFeed }
+admin.autodiscover()
+
+feeds = {'entries': LatestEntriesFeed,
+         'categories': CategoryFeed}
 
 urlpatterns = patterns('',
-    (r'^admin/', include(admin.site.urls)),
-    
-    (r'^tinymce/', include('tinymce.urls')),
-    (r'^tiny_mce/', include('tinymce.urls')),
+    url(r'^admin/', include(admin.site.urls)),
 
-    # (r'^tiny_mce/(?P<path>.*)$', 'django.views.static.serve', 
+    url(r'^tinymce/', include('tinymce.urls')),
+    url(r'^tiny_mce/', include('tinymce.urls')),
+
+    # url(r'^tiny_mce/(?P<path>.*)$', 'django.views.static.serve',
     #     { 'document_root': settings.PROJECT_ROOT + '/js/tiny_mce/' }),
 
-    (r'^search/$', 'cms.search.views.search'),
-    
-    (r'^comments/', include('django.contrib.comments.urls')),
-    
-    (r'^weblog/categories/', include('coltrane.urls.categories')),
-    (r'^weblog/links/', include('coltrane.urls.links')),
-    (r'^weblog/tags/', include('coltrane.urls.tags')),
-    (r'^weblog/', include('coltrane.urls.entries')),
-    
-    (r'^weblog/feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.Feed', { 'feed_dict': feeds }),
-     
-    (r'^codeshare/', include('cab.urls.home')),
-    (r'^codeshare/snippets/', include('cab.urls.snippets')),
-    (r'^codeshare/languages/', include('cab.urls.languages')),
-    (r'^codeshare/popular/', include('cab.urls.popular')),
-    (r'^codeshare/tags/', include('cab.urls.tags')),
-    (r'^codeshare/bookmarks/', include('cab.urls.bookmarks')),
-    (r'^codeshare/ratings/', include('cab.urls.ratings')),
-    
-    (r'^codeshare/css/(?P<path>.*)$', 'django.views.static.serve',
-        { 'document_root': settings.PROJECT_ROOT + '/../cab/css/' }),
- 
-    (r'', include('django.contrib.flatpages.urls')),
+    url(r'^search/$', 'cms.search.views.search'),
+
+    url(r'^comments/', include('django.contrib.comments.urls')),
+
+    url(r'^weblog/categories/', include('coltrane.urls.categories')),
+    url(r'^weblog/links/', include('coltrane.urls.links')),
+    url(r'^weblog/tags/', include('coltrane.urls.tags')),
+    url(r'^weblog/', include('coltrane.urls.entries')),
+
+    url(r'^weblog/feeds/(?P<url>.*)/$',
+        'django.contrib.syndication.views.Feed', {'feed_dict': feeds}
+        ),
+
+    url(r'^codeshare/', include('cab.urls.home')),
+    url(r'^codeshare/snippets/', include('cab.urls.snippets')),
+    url(r'^codeshare/languages/', include('cab.urls.languages')),
+    url(r'^codeshare/popular/', include('cab.urls.popular')),
+    url(r'^codeshare/tags/', include('cab.urls.tags')),
+    url(r'^codeshare/bookmarks/', include('cab.urls.bookmarks')),
+    url(r'^codeshare/ratings/', include('cab.urls.ratings')),
+
+    url(r'^codeshare/css/(?P<path>.*)$', 'django.views.static.serve',
+        {'document_root': os.path.join(settings.PROJECT_ROOT, 'cab', 'css') }),
+
+    url(r'', include('django.contrib.flatpages.urls')),
 )

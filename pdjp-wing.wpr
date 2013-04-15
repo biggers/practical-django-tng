@@ -26,3 +26,4 @@ proj.file-list = [loc('cms/manage.py'),
                   loc('cms/settings.py')]
 proj.file-type = 'shared'
 proj.main-file = loc('cms/manage.py')
+testing.test-framework = {loc('cms/manage.py'): ':internal djangotest'}
