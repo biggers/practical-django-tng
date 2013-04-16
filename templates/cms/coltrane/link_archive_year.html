@@ -5,7 +5,7 @@
 {% block content %}
     <ul>
     {% for month in date_list %}
-      <li><a href="{% url coltrane_link_archive_month year,month|date:"b" %}">{{ month|date:"F" }}</a></li>
+      <li><a href="{% url "coltrane_link_archive_month" year,month|date:"b" %}">{{ month|date:"F" }}</a></li>
     {% endfor %}
     </ul>
 {% endblock %}

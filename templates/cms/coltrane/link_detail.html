@@ -24,7 +24,7 @@
     {% if object.etags.count %}
         <p>This link is tagged with 
             {% for tag in object.etags %}
-                <a href="{% url coltrane_link_archive_tag tag.name %}">{{ tag.name }}</a>
+                <a href="{% url "coltrane_link_archive_tag" tag.name %}">{{ tag.name }}</a>
                 {% if forloop.last %}{% else %}
                     {% ifequal forloop.revcounter0 1 %}and {% else %}, {% endifequal %}
                 {% endif %}
