@@ -30,12 +30,12 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'var', 'www')
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/media/'
+MEDIA_URL = 'http://127.0.0.1:8000/media/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -59,7 +59,9 @@ STATIC_URL = '/static/'
 ADMIN_MEDIA_PREFIX = STATIC_URL + "admin/"
 
 # A list of locations of additional static files
-STATICFILES_DIRS = ()
+STATICFILES_DIRS = (
+    MEDIA_ROOT,                    
+)
 
 # List of finder classes that know how to find static files in
 # various locations.
@@ -111,6 +113,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     # add your Django apps
     'django_extensions',
+    'widget_tweaks',
 )
 
 

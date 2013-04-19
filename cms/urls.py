@@ -11,6 +11,7 @@ feeds = {'entries': LatestEntriesFeed,
          'categories': CategoryFeed}
 
 urlpatterns = patterns('',
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT }),
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^tinymce/', include('tinymce.urls')),
@@ -26,7 +27,7 @@ urlpatterns = patterns('',
     url(r'^weblog/categories/', include('coltrane.urls.categories')),
     url(r'^weblog/links/', include('coltrane.urls.links')),
     url(r'^weblog/tags/', include('coltrane.urls.tags')),
-    url(r'^weblog/', include('coltrane.urls.entries')),
+    url(r'^weblog/', include('coltrane.urls.entries'),name='weblog'),
 
     url(r'^weblog/feeds/(?P<url>.*)/$',
         'django.contrib.syndication.views.Feed', {'feed_dict': feeds}

@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import patterns, url
 from django.views.generic.dates import DateDetailView, ArchiveIndexView, YearArchiveView, MonthArchiveView, DayArchiveView
-
+#https://docs.djangoproject.com/en/dev/ref/class-based-views/generic-date-based/
 from coltrane.models import Entry
 
 urlpatterns = patterns('django.views.generic.dates',

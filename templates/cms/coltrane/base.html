@@ -4,42 +4,53 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Weblog {% block title %}{% endblock %}</title>
-    <style type="text/css">
-        #header {
-            width: 800px;
-            margin: 0 20px 1em 20px;
-            border-bottom: 1px solid #ccc;
-        }
-        #content {
-            width: 550px;
-            margin: 0 20px;
-            float: left;
-        }
-        #sidebar {
-            width: 230px;
-            float: left;
-        }
-    </style>
+ <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/coltrane.css" />
+<!-- BEGIN JavaScript -->
+<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.js"></script>
 </head>
 <body class="{% block bodyclass %}{% endblock %}">
-    <div id="header">
+    <div class="wrapper">
+    	
+      <div id="header">
         <h1 id="branding">Weblog</h1>
-    </div>
-    
-    <div id="content">
+      </div>
+	
+		<!-- BEGIN Dark navigation bar -->
+		<nav class="blue">
+			<ul class="clear">
+				<li><a href="/weblog/">Home</a></li>
+				<li><a href="{% url "coltrane_entry_archive_index" %}">Entries</a></li>
+				<li><a href="{% url "coltrane_link_archive_index" %}">Links</a>
+					
+				</li>
+				<li><a href="{% url "coltrane_category_list" %}">Categories</a>
+					<ul>
+							<li>Testing</li>
+							<!--
+{% if object.categories.count %}
+	 {% for category in object.categories.all %}
+		<li> <a href="{{ category.get_absolute_url }}">{{ category.title }}</a></li>
+	{% endfor %}
+{% endif %}-->
+					</ul>
+				</li>
+				<li><a href="{% url "coltrane_tag_list" %}">Tags</a></li>
+				<li><a href="#">Contact us</a></li>
+				<li><a href="#">About us</a></li>
+				<li><a href="#">Admin Area&nbsp;</a></li>
+			</ul>
+		</nav>
+		<!-- END Dark navigation bar -->
+		
+
+    <div class="left">
         {% block content %}
         {% endblock %}
     </div>
     
-    <div id="sidebar">
-        <h2>Navigation</h2>
-        <ul id="main-nav">
-            <li id="main-nav-entries"><a href="{% url "coltrane_entry_archive_index" %}">Entries</a></li>
-            <li id="main-nav-links"><a href="{% url "coltrane_link_archive_index" %}">Links</a></li>
-            <li id="main-nav-categories"><a href="{% url "coltrane_category_list" %}">Categories</a></li>
-            <li id="main-nav-tags"><a href="{% url "coltrane_tag_list" %}">Tags</a></li>
-        </ul>
-        
+    <div class="right">
+    	
+
         <h2>What is this?</h2>
         {% block whatis %}
         {% endblock %}
@@ -64,6 +75,26 @@
             {% endfor %}
         </ul>
     </div>
-    
+</div>
 </body>
 </html>
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+	// Requried: Navigation bar drop-down
+	$("nav ul li").hover(function() {
+		$(this).addClass("active");
+		$(this).find("ul").show().animate({opacity: 1}, 400);
+		},function() {
+		$(this).find("ul").hide().animate({opacity: 0}, 200);
+		$(this).removeClass("active");
+	});
+	
+	// Requried: Addtional styling elements
+	$('nav ul li ul li:first-child').prepend('<li class="arrow"></li>');
+	$('nav ul li:first-child').addClass('first');
+	$('nav ul li:last-child').addClass('last');
+	$('nav ul li ul').parent().append('<span class="dropdown"></span>').addClass('drop');
+
+});
+</script>

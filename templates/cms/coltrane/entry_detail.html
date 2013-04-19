@@ -18,8 +18,38 @@
     {% endfor %}
     
     <h2>Post a comment</h2>
-        
-    {% render_comment_form for object %}
+ 
+ {% get_comment_form for object as form %}
+ {% load widget_tweaks %}
+<form action="{% comment_form_target %}" method="post">
+	{% csrf_token %}
+    {{ form.content_type }}
+    {{ form.object_pk }}
+    {{ form.timestamp }}
+    {{ form.security_hash }}
+    <table>
+    	<tr><td colspan="2" style="display: none">{{ form.honeypot }}</td></tr>
+    	<tr>
+    		<td>Name</td>
+    		<td>{{ form.name|add_class:"textbox" }}</td>
+    	</tr>
+    	<tr>
+    		<td>Email</td>
+    		<td>{{ form.email|add_class:"textbox" }}</td>
+    	</tr>
+    	<tr>
+    		<td>URL</td>
+    		<td>{{ form.url|add_class:"textbox" }}</td>
+    	</tr>
+    	<tr>
+    		<td>Comment</td>
+    		<td>{{ form.comment|add_class:"textarea" }}</td>
+    	</tr>
+    	<tr>
+    		<td colspan="2" align="center"><input class="btn" type="submit" name="post" value="Post Comment" /></td>
+    	</tr>
+    </table>
+</form>
     
 {% endblock %}
 

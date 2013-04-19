@@ -198,5 +198,10 @@ class EntryModerator(CommentModerator):
                                 akismet_data,
                                 build_data=True)
         return False
+    
+    class Media:
+        css = {
+            'all': ('coltrane.css',)
+        }
         
 moderator.register(Entry, EntryModerator)
