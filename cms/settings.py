@@ -37,11 +37,6 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'var', 'www')
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
 MEDIA_URL = '/media/'
 
-# URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
-# trailing slash.
-# Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/admin_media/'
-
 # README!  https://pypi.python.org/pypi/django-staticfiles/
 #
 # Absolute path to the directory that holds static files.
@@ -76,9 +71,7 @@ SECRET_KEY = '5pifmc9#wh6kml!cjrix-fw^3geyc^ic(s!s1$64zq&)6wewlg'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#OLD! 'django.template.loaders.filesystem.load_template_source',
-#OLD! 'django.template.loaders.app_directories.load_template_source',
-#     'django.template.loaders.eggs.load_template_source',
+    'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -111,8 +104,8 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     # add your Django apps
     'django_extensions',
+    'twitter_bootstrap',
 )
-
 
 DELICIOUS_USER = 'your username'
 DELICIOUS_PASSWORD = 'your password'
