@@ -15,13 +15,14 @@ INSTALLED_APPS = settings.INSTALLED_APPS + (
     'tagging',
     'cms.search',
     'django.contrib.markup',
-    'django.contrib.flatpages',
+#    'django.contrib.flatpages',
     'django.contrib.comments',
     'django.contrib.syndication',
     'coltrane',
     'django_pygments',
     'cab',
-    # 'tagging',
+    'flatpages_plus',
+    'taggit',
     # MUST be the last (after all apps!)
     'south'
 )
