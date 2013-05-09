@@ -1,0 +1,20 @@
+diff --git a/tagging/views.py b/tagging/views.py
+index 9e7e2f5..d496dec 100644
+--- a/tagging/views.py
++++ b/tagging/views.py
+@@ -3,7 +3,8 @@ Tagging related views.
+ """
+ from django.http import Http404
+ from django.utils.translation import ugettext as _
+-from django.views.generic.list_detail import object_list
++#from django.views.generic.list_detail import object_list
++from django.views.generic.list import ListView
+ 
+ from tagging.models import Tag, TaggedItem
+ from tagging.utils import get_tag, get_queryset_and_model
+@@ -49,4 +50,4 @@ def tagged_object_list(request, queryset_or_model=None, tag=None,
+         kwargs['extra_context']['related_tags'] = \
+             Tag.objects.related_for_model(tag_instance, queryset_or_model,
+                                           counts=related_tag_counts)
+-    return object_list(request, queryset, **kwargs)
++    return ListView.as_view(queryset, **kwargs)
