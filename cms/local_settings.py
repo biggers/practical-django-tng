@@ -24,7 +24,10 @@ INSTALLED_APPS = settings.INSTALLED_APPS + (
     'flatpages_plus',
     'taggit',
     # MUST be the last (after all apps!)
-    'south'
+    'south',
+    'multiuploader',
+    'jqueryupload',
+    'sorl.thumbnail'
 )
 
 TINYMCE_DEFAULT_CONFIG = {
