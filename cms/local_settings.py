@@ -25,9 +25,7 @@ INSTALLED_APPS = settings.INSTALLED_APPS + (
     'taggit',
     # MUST be the last (after all apps!)
     'south',
-    'multiuploader',
-    'jqueryupload',
-    'sorl.thumbnail'
+    'uploader.upload'
 )
 
 TINYMCE_DEFAULT_CONFIG = {
