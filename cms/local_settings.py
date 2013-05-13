@@ -24,8 +24,8 @@ INSTALLED_APPS = settings.INSTALLED_APPS + (
     'flatpages_plus',
     'taggit',
     # MUST be the last (after all apps!)
+    'upload',
     'south',
-    'uploader.upload'
 )
 
 TINYMCE_DEFAULT_CONFIG = {
