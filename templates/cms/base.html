@@ -1,6 +1,8 @@
 <html>
   <head>
-      <title>Practical project</title>
+      <title>Practical project {% block title %}{% endblock %}</title>
+       {% block css %}{% endblock %}
+      {% block js %}{% endblock %}
   </head>
   <body>
       {% block base_content%}{% endblock %}
