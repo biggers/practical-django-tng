@@ -28,6 +28,10 @@ INSTALLED_APPS = settings.INSTALLED_APPS + (
     'south',
 )
 
+MIDDLEWARE_CLASSES = settings.MIDDLEWARE_CLASSES  + (
+    'flatpages_plus.middleware.FlatpageFallbackMiddleware',
+)
+
 TINYMCE_DEFAULT_CONFIG = {
     'plugins': "table,spellchecker,paste,searchreplace",
     'theme': "advanced",
