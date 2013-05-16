@@ -1,8 +1,5 @@
-<html>
-<head>
-    <title>Search</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block base_content %}
     <form method="get" action="/search/">
         <p><label for="id_q">Search:</label>
             <input type="text" name="q" id="id_q" value="{{ query }}"/>
@@ -32,5 +29,4 @@
     {% else %}
         <p>Type a search query into the box above, and press "Submit" to search.</p>
     {% endif %}
-</body>
-</html>
+{% endblock %}
