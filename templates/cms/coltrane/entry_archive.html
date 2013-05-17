@@ -2,7 +2,7 @@
 
 {% block title %}{{ block.super }} | Latest entries{% endblock %}
 
-{% block content %}
+{% block base_content %}
     {% for entry in latest %}
       <h2>{{ entry.title }}</h2>
       <p>Published on {{ entry.pub_date|date:"F j, Y" }}</p>

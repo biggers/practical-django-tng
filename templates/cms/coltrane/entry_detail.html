@@ -2,7 +2,7 @@
 
 {% block title %}{{ block.super }} | {{ object.title }}{% endblock %}
 
-{% block content %}
+{% block base_content %}
     <h2>{{ object.title }}</h2>
     {{ object.body_html|safe }}
     

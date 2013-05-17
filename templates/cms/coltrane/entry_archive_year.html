@@ -2,7 +2,7 @@
 
 {% block title %}{{ block.super }} | {{ year }}{% endblock %}
 
-{% block content %}
+{% block base_content %}
     <ul>
     {% for month in date_list %}
       <li><a href="{% url "coltrane_entry_archive_month" year,month|date:"b" %}">{{ month|date:"F" }}</a></li>
