@@ -26,6 +26,7 @@ INSTALLED_APPS = settings.INSTALLED_APPS + (
     # MUST be the last (after all apps!)
     'upload',
     'south',
+    'flatpage',
 )
 MIDDLEWARE_CLASSES = settings.MIDDLEWARE_CLASSES + (
     'flatpages_plus.middleware.FlatpageFallbackMiddleware',

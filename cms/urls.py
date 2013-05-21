@@ -43,7 +43,7 @@ urlpatterns = patterns('',
 
     url(r'^codeshare/css/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': os.path.join(settings.PROJECT_ROOT, 'cab', 'css') }),
-    url(r'^jqueryupload/', include('jqueryupload.urls')),
+    #url(r'^jqueryupload/', include('jqueryupload.urls')),
     url(r'^upload/', include('upload.urls')),
- #   url(r'', include('django.contrib.flatpages.urls')),
+    url(r'^pages/', include('flatpage.urls')),
 )
