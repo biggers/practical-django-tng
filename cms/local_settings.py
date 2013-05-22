@@ -25,8 +25,8 @@ INSTALLED_APPS = settings.INSTALLED_APPS + (
     'taggit',
     # MUST be the last (after all apps!)
     'upload',
+    'layouts',
     'south',
-    'flatpage',
 )
 MIDDLEWARE_CLASSES = settings.MIDDLEWARE_CLASSES + (
     'flatpages_plus.middleware.FlatpageFallbackMiddleware',
