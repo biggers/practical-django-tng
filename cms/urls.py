@@ -46,4 +46,5 @@ urlpatterns = patterns('',
     #url(r'^jqueryupload/', include('jqueryupload.urls')),
     url(r'^upload/', include('upload.urls')),
     url(r'^pages/', include('flatpage.urls')),
+    url(r'^(?P<url>.*)/$', include('flatpage.siteurls')),
 )
