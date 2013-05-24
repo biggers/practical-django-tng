@@ -15,26 +15,28 @@ INSTALLED_APPS = settings.INSTALLED_APPS + (
     'tagging',
     'cms.search',
     'django.contrib.markup',
-#    'django.contrib.flatpages',
     'django.contrib.comments',
     'django.contrib.syndication',
+#    'django.contrib.flatpages',
     'coltrane',
     'django_pygments',
     'cab',
-    'flatpages_plus',
     'taggit',
     # MUST be the last (after all apps!)
     'upload',
-    'layouts',
     'south',
+    'flatpages_plus',
+    'layouts',
 )
 MIDDLEWARE_CLASSES = settings.MIDDLEWARE_CLASSES + (
-    'flatpages_plus.middleware.FlatpageFallbackMiddleware',
+#    'flatpages_plus.middleware.FlatpageFallbackMiddleware',
+    # South (migrations) MUST be the last, after all apps!
+#    'south',
 )
 
-MIDDLEWARE_CLASSES = settings.MIDDLEWARE_CLASSES  + (
-    'flatpages_plus.middleware.FlatpageFallbackMiddleware',
-)
+#MIDDLEWARE_CLASSES = settings.MIDDLEWARE_CLASSES  + (
+#    'flatpages_plus.middleware.FlatpageFallbackMiddleware',
+#)
 
 TINYMCE_DEFAULT_CONFIG = {
     'plugins': "table,spellchecker,paste,searchreplace",

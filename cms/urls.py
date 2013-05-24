@@ -45,6 +45,8 @@ urlpatterns = patterns('',
         {'document_root': os.path.join(settings.PROJECT_ROOT, 'cab', 'css') }),
     #url(r'^jqueryupload/', include('jqueryupload.urls')),
     url(r'^upload/', include('upload.urls')),
+
+#    url('^pages/', include('django.contrib.flatpages.urls')),
     url(r'^pages/', include('layouts.urls')),
     url(r'^(?P<url>.*)/$', include('layouts.siteurls')),
 )
