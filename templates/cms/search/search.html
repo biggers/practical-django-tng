@@ -25,8 +25,8 @@
         {% endif %}
     {% endif %}
     {% if query and not keyword_results and not results %}
-        <p>No results found.</p>
+        <p class="text-error">No results found.</p>
     {% else %}
-        <p>Type a search query into the box above, and press "Submit" to search.</p>
+        <p class="text-info">Type a search query into the box above, and press "Submit" to search.</p>
     {% endif %}
 {% endblock %}
