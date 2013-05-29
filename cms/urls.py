@@ -46,7 +46,13 @@ urlpatterns = patterns('',
     #url(r'^jqueryupload/', include('jqueryupload.urls')),
     url(r'^upload/', include('upload.urls')),
 
-#    url('^pages/', include('django.contrib.flatpages.urls')),
-    url(r'^pages/', include('layouts.urls')),
+    url('^help/', include('flatpage_views.urls')),
+    url('^help/list/', include('flatpage_views.urls')),
+#    url(r'^pages/', include('layouts.urls')),
     url(r'^(?P<url>.*)/$', include('layouts.siteurls')),
 )
+
+urlpatterns += patterns('django.contrib.flatpages.views',
+    (r'^(?P<url>.*)$', 'flatpage'),
+)
+
