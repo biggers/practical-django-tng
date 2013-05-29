@@ -17,15 +17,16 @@ INSTALLED_APPS = settings.INSTALLED_APPS + (
     'django.contrib.markup',
     'django.contrib.comments',
     'django.contrib.syndication',
-#    'django.contrib.flatpages',
+    'django.contrib.flatpages',
     'coltrane',
     'django_pygments',
     'cab',
     'taggit',
+    'flatpage_views',
     # MUST be the last (after all apps!)
     'upload',
     'south',
-    'flatpages_plus',
+#    'flatpages_plus',
     'layouts',
 )
 MIDDLEWARE_CLASSES = settings.MIDDLEWARE_CLASSES + (
