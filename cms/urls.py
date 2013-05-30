@@ -45,9 +45,10 @@ urlpatterns = patterns('',
         {'document_root': os.path.join(settings.PROJECT_ROOT, 'cab', 'css') }),
     #url(r'^jqueryupload/', include('jqueryupload.urls')),
     url(r'^upload/', include('upload.urls')),
+    url('^help/', include('help.urls')),
 
-    url('^help/', include('flatpage_views.urls')),
-    url('^help/list/', include('flatpage_views.urls')),
+#    url('^help/', include('flatpage_views.urls')),
+#    url('^help/list/', include('flatpage_views.urls')),
 #    url(r'^pages/', include('layouts.urls')),
     url(r'^(?P<url>.*)/$', include('layouts.siteurls')),
 )
