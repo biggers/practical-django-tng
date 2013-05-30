@@ -23,6 +23,7 @@ INSTALLED_APPS = settings.INSTALLED_APPS + (
     'cab',
     'taggit',
     'flatpage_views',
+    'help',
     # MUST be the last (after all apps!)
     'upload',
     'south',
