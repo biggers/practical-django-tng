@@ -1,0 +1,415 @@
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+CREATE TABLE "auth_permission" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "name" varchar(50) NOT NULL,
+    "content_type_id" integer NOT NULL,
+    "codename" varchar(100) NOT NULL,
+    UNIQUE ("content_type_id", "codename")
+);
+INSERT INTO "auth_permission" VALUES(1,'Can add permission',1,'add_permission');
+INSERT INTO "auth_permission" VALUES(2,'Can change permission',1,'change_permission');
+INSERT INTO "auth_permission" VALUES(3,'Can delete permission',1,'delete_permission');
+INSERT INTO "auth_permission" VALUES(4,'Can add group',2,'add_group');
+INSERT INTO "auth_permission" VALUES(5,'Can change group',2,'change_group');
+INSERT INTO "auth_permission" VALUES(6,'Can delete group',2,'delete_group');
+INSERT INTO "auth_permission" VALUES(7,'Can add user',3,'add_user');
+INSERT INTO "auth_permission" VALUES(8,'Can change user',3,'change_user');
+INSERT INTO "auth_permission" VALUES(9,'Can delete user',3,'delete_user');
+INSERT INTO "auth_permission" VALUES(10,'Can add content type',4,'add_contenttype');
+INSERT INTO "auth_permission" VALUES(11,'Can change content type',4,'change_contenttype');
+INSERT INTO "auth_permission" VALUES(12,'Can delete content type',4,'delete_contenttype');
+INSERT INTO "auth_permission" VALUES(13,'Can add session',5,'add_session');
+INSERT INTO "auth_permission" VALUES(14,'Can change session',5,'change_session');
+INSERT INTO "auth_permission" VALUES(15,'Can delete session',5,'delete_session');
+INSERT INTO "auth_permission" VALUES(16,'Can add site',6,'add_site');
+INSERT INTO "auth_permission" VALUES(17,'Can change site',6,'change_site');
+INSERT INTO "auth_permission" VALUES(18,'Can delete site',6,'delete_site');
+INSERT INTO "auth_permission" VALUES(19,'Can add log entry',7,'add_logentry');
+INSERT INTO "auth_permission" VALUES(20,'Can change log entry',7,'change_logentry');
+INSERT INTO "auth_permission" VALUES(21,'Can delete log entry',7,'delete_logentry');
+INSERT INTO "auth_permission" VALUES(22,'Can add tag',8,'add_tag');
+INSERT INTO "auth_permission" VALUES(23,'Can change tag',8,'change_tag');
+INSERT INTO "auth_permission" VALUES(24,'Can delete tag',8,'delete_tag');
+INSERT INTO "auth_permission" VALUES(25,'Can add tagged item',9,'add_taggeditem');
+INSERT INTO "auth_permission" VALUES(26,'Can change tagged item',9,'change_taggeditem');
+INSERT INTO "auth_permission" VALUES(27,'Can delete tagged item',9,'delete_taggeditem');
+INSERT INTO "auth_permission" VALUES(28,'Can add search keyword',10,'add_searchkeyword');
+INSERT INTO "auth_permission" VALUES(29,'Can change search keyword',10,'change_searchkeyword');
+INSERT INTO "auth_permission" VALUES(30,'Can delete search keyword',10,'delete_searchkeyword');
+INSERT INTO "auth_permission" VALUES(31,'Can add comment',11,'add_comment');
+INSERT INTO "auth_permission" VALUES(32,'Can change comment',11,'change_comment');
+INSERT INTO "auth_permission" VALUES(33,'Can delete comment',11,'delete_comment');
+INSERT INTO "auth_permission" VALUES(34,'Can moderate comments',11,'can_moderate');
+INSERT INTO "auth_permission" VALUES(35,'Can add comment flag',12,'add_commentflag');
+INSERT INTO "auth_permission" VALUES(36,'Can change comment flag',12,'change_commentflag');
+INSERT INTO "auth_permission" VALUES(37,'Can delete comment flag',12,'delete_commentflag');
+INSERT INTO "auth_permission" VALUES(38,'Can add flat page',13,'add_flatpage');
+INSERT INTO "auth_permission" VALUES(39,'Can change flat page',13,'change_flatpage');
+INSERT INTO "auth_permission" VALUES(40,'Can delete flat page',13,'delete_flatpage');
+INSERT INTO "auth_permission" VALUES(41,'Can add category',14,'add_category');
+INSERT INTO "auth_permission" VALUES(42,'Can change category',14,'change_category');
+INSERT INTO "auth_permission" VALUES(43,'Can delete category',14,'delete_category');
+INSERT INTO "auth_permission" VALUES(44,'Can add entry',15,'add_entry');
+INSERT INTO "auth_permission" VALUES(45,'Can change entry',15,'change_entry');
+INSERT INTO "auth_permission" VALUES(46,'Can delete entry',15,'delete_entry');
+INSERT INTO "auth_permission" VALUES(47,'Can add link',16,'add_link');
+INSERT INTO "auth_permission" VALUES(48,'Can change link',16,'change_link');
+INSERT INTO "auth_permission" VALUES(49,'Can delete link',16,'delete_link');
+INSERT INTO "auth_permission" VALUES(50,'Can add language',17,'add_language');
+INSERT INTO "auth_permission" VALUES(51,'Can change language',17,'change_language');
+INSERT INTO "auth_permission" VALUES(52,'Can delete language',17,'delete_language');
+INSERT INTO "auth_permission" VALUES(53,'Can add snippet',18,'add_snippet');
+INSERT INTO "auth_permission" VALUES(54,'Can change snippet',18,'change_snippet');
+INSERT INTO "auth_permission" VALUES(55,'Can delete snippet',18,'delete_snippet');
+INSERT INTO "auth_permission" VALUES(56,'Can add bookmark',19,'add_bookmark');
+INSERT INTO "auth_permission" VALUES(57,'Can change bookmark',19,'change_bookmark');
+INSERT INTO "auth_permission" VALUES(58,'Can delete bookmark',19,'delete_bookmark');
+INSERT INTO "auth_permission" VALUES(59,'Can add rating',20,'add_rating');
+INSERT INTO "auth_permission" VALUES(60,'Can change rating',20,'change_rating');
+INSERT INTO "auth_permission" VALUES(61,'Can delete rating',20,'delete_rating');
+INSERT INTO "auth_permission" VALUES(62,'Can add Tag',21,'add_tag');
+INSERT INTO "auth_permission" VALUES(63,'Can change Tag',21,'change_tag');
+INSERT INTO "auth_permission" VALUES(64,'Can delete Tag',21,'delete_tag');
+INSERT INTO "auth_permission" VALUES(65,'Can add Tagged Item',22,'add_taggeditem');
+INSERT INTO "auth_permission" VALUES(66,'Can change Tagged Item',22,'change_taggeditem');
+INSERT INTO "auth_permission" VALUES(67,'Can delete Tagged Item',22,'delete_taggeditem');
+INSERT INTO "auth_permission" VALUES(68,'Can add image',23,'add_image');
+INSERT INTO "auth_permission" VALUES(69,'Can change image',23,'change_image');
+INSERT INTO "auth_permission" VALUES(70,'Can delete image',23,'delete_image');
+INSERT INTO "auth_permission" VALUES(71,'Can add migration history',24,'add_migrationhistory');
+INSERT INTO "auth_permission" VALUES(72,'Can change migration history',24,'change_migrationhistory');
+INSERT INTO "auth_permission" VALUES(73,'Can delete migration history',24,'delete_migrationhistory');
+INSERT INTO "auth_permission" VALUES(74,'Can add Help category',25,'add_helpcategory');
+INSERT INTO "auth_permission" VALUES(75,'Can change Help category',25,'change_helpcategory');
+INSERT INTO "auth_permission" VALUES(76,'Can delete Help category',25,'delete_helpcategory');
+INSERT INTO "auth_permission" VALUES(77,'Can add Help item',26,'add_helpitem');
+INSERT INTO "auth_permission" VALUES(78,'Can change Help item',26,'change_helpitem');
+INSERT INTO "auth_permission" VALUES(79,'Can delete Help item',26,'delete_helpitem');
+CREATE TABLE "auth_group_permissions" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "group_id" integer NOT NULL,
+    "permission_id" integer NOT NULL REFERENCES "auth_permission" ("id"),
+    UNIQUE ("group_id", "permission_id")
+);
+CREATE TABLE "auth_group" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "name" varchar(80) NOT NULL UNIQUE
+);
+CREATE TABLE "auth_user_groups" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "user_id" integer NOT NULL,
+    "group_id" integer NOT NULL REFERENCES "auth_group" ("id"),
+    UNIQUE ("user_id", "group_id")
+);
+CREATE TABLE "auth_user_user_permissions" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "user_id" integer NOT NULL,
+    "permission_id" integer NOT NULL REFERENCES "auth_permission" ("id"),
+    UNIQUE ("user_id", "permission_id")
+);
+CREATE TABLE "auth_user" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "password" varchar(128) NOT NULL,
+    "last_login" datetime NOT NULL,
+    "is_superuser" bool NOT NULL,
+    "username" varchar(30) NOT NULL UNIQUE,
+    "first_name" varchar(30) NOT NULL,
+    "last_name" varchar(30) NOT NULL,
+    "email" varchar(75) NOT NULL,
+    "is_staff" bool NOT NULL,
+    "is_active" bool NOT NULL,
+    "date_joined" datetime NOT NULL
+);
+INSERT INTO "auth_user" VALUES(1,'pbkdf2_sha256$10000$T2PWBaRiUAIw$/ZTeVvO3ZtjHnPCBUkc48QGK6azo5hbsefPvX0DV+is=','2013-05-28 06:02:27.411440',1,'admin','','','admin@admin.com',1,1,'2013-05-28 06:01:22.025747');
+CREATE TABLE "django_content_type" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "name" varchar(100) NOT NULL,
+    "app_label" varchar(100) NOT NULL,
+    "model" varchar(100) NOT NULL,
+    UNIQUE ("app_label", "model")
+);
+INSERT INTO "django_content_type" VALUES(1,'permission','auth','permission');
+INSERT INTO "django_content_type" VALUES(2,'group','auth','group');
+INSERT INTO "django_content_type" VALUES(3,'user','auth','user');
+INSERT INTO "django_content_type" VALUES(4,'content type','contenttypes','contenttype');
+INSERT INTO "django_content_type" VALUES(5,'session','sessions','session');
+INSERT INTO "django_content_type" VALUES(6,'site','sites','site');
+INSERT INTO "django_content_type" VALUES(7,'log entry','admin','logentry');
+INSERT INTO "django_content_type" VALUES(8,'tag','tagging','tag');
+INSERT INTO "django_content_type" VALUES(9,'tagged item','tagging','taggeditem');
+INSERT INTO "django_content_type" VALUES(10,'search keyword','search','searchkeyword');
+INSERT INTO "django_content_type" VALUES(11,'comment','comments','comment');
+INSERT INTO "django_content_type" VALUES(12,'comment flag','comments','commentflag');
+INSERT INTO "django_content_type" VALUES(13,'flat page','flatpages','flatpage');
+INSERT INTO "django_content_type" VALUES(14,'category','coltrane','category');
+INSERT INTO "django_content_type" VALUES(15,'entry','coltrane','entry');
+INSERT INTO "django_content_type" VALUES(16,'link','coltrane','link');
+INSERT INTO "django_content_type" VALUES(17,'language','cab','language');
+INSERT INTO "django_content_type" VALUES(18,'snippet','cab','snippet');
+INSERT INTO "django_content_type" VALUES(19,'bookmark','cab','bookmark');
+INSERT INTO "django_content_type" VALUES(20,'rating','cab','rating');
+INSERT INTO "django_content_type" VALUES(21,'Tag','taggit','tag');
+INSERT INTO "django_content_type" VALUES(22,'Tagged Item','taggit','taggeditem');
+INSERT INTO "django_content_type" VALUES(23,'image','upload','image');
+INSERT INTO "django_content_type" VALUES(24,'migration history','south','migrationhistory');
+INSERT INTO "django_content_type" VALUES(25,'Help category','help','helpcategory');
+INSERT INTO "django_content_type" VALUES(26,'Help item','help','helpitem');
+CREATE TABLE "django_session" (
+    "session_key" varchar(40) NOT NULL PRIMARY KEY,
+    "session_data" text NOT NULL,
+    "expire_date" datetime NOT NULL
+);
+INSERT INTO "django_session" VALUES('xlwbnmml0szxbhrb3wmwp092k182mn8z','MzBmYzQxMDU2MDY4MTdiYmY0YWI5Y2VmZjZlZTM0ZjA2NmQ1NDA0MzqAAn1xAShVEl9hdXRoX3VzZXJfYmFja2VuZHECVSlkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZHEDVQ1fYXV0aF91c2VyX2lkcQRLAXUu','2013-06-11 06:02:27.517775');
+CREATE TABLE "django_site" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "domain" varchar(100) NOT NULL,
+    "name" varchar(50) NOT NULL
+);
+INSERT INTO "django_site" VALUES(1,'example.com','example.com');
+INSERT INTO "django_site" VALUES(2,'http://127.0.0.1:8000','sample.com');
+CREATE TABLE "django_admin_log" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "action_time" datetime NOT NULL,
+    "user_id" integer NOT NULL REFERENCES "auth_user" ("id"),
+    "content_type_id" integer REFERENCES "django_content_type" ("id"),
+    "object_id" text,
+    "object_repr" varchar(200) NOT NULL,
+    "action_flag" smallint unsigned NOT NULL,
+    "change_message" text NOT NULL
+);
+INSERT INTO "django_admin_log" VALUES(1,'2013-05-28 06:26:43.072437',1,13,'1','/about/ -- About Us',1,'');
+INSERT INTO "django_admin_log" VALUES(2,'2013-05-28 06:27:24.252521',1,6,'2','http://127.0.0.1:8000/',1,'');
+INSERT INTO "django_admin_log" VALUES(3,'2013-05-28 06:27:28.089783',1,13,'1','/about/ -- About Us',2,'Changed sites.');
+INSERT INTO "django_admin_log" VALUES(4,'2013-05-28 06:28:07.849701',1,13,'1','/about/ -- About Us',2,'No fields changed.');
+INSERT INTO "django_admin_log" VALUES(5,'2013-05-28 06:29:36.065984',1,13,'1','/about/ -- About Us',2,'Changed enable_comments.');
+INSERT INTO "django_admin_log" VALUES(6,'2013-05-28 06:42:25.085609',1,6,'2','http://127.0.0.1:8000',2,'Changed domain.');
+INSERT INTO "django_admin_log" VALUES(7,'2013-05-29 05:23:13.687741',1,13,'1','/about/ -- About Us',2,'Changed sites.');
+INSERT INTO "django_admin_log" VALUES(8,'2013-05-29 05:37:20.598192',1,13,'1','/about/ -- About Us',2,'Changed content.');
+INSERT INTO "django_admin_log" VALUES(9,'2013-05-30 01:52:53.667578',1,25,'1','Medication',1,'');
+INSERT INTO "django_admin_log" VALUES(10,'2013-05-30 01:53:45.101922',1,26,'1','Medication: ''When to take medication'' ',1,'');
+INSERT INTO "django_admin_log" VALUES(11,'2013-05-30 02:20:33.422853',1,25,'2','Health Journal',1,'');
+INSERT INTO "django_admin_log" VALUES(12,'2013-05-30 07:35:09.253541',1,25,'2','Health Journal',3,'');
+INSERT INTO "django_admin_log" VALUES(13,'2013-05-30 07:35:09.338908',1,25,'1','Medication',3,'');
+INSERT INTO "django_admin_log" VALUES(14,'2013-05-30 07:35:50.502763',1,25,'1','about',1,'');
+INSERT INTO "django_admin_log" VALUES(15,'2013-05-30 07:36:03.704646',1,25,'1','medication',2,'Changed title.');
+INSERT INTO "django_admin_log" VALUES(16,'2013-05-30 07:49:31.108345',1,26,'1','medication: ''How to take medication'' ',1,'');
+INSERT INTO "django_admin_log" VALUES(17,'2013-05-30 07:53:39.659502',1,25,'2','Health Journal',1,'');
+INSERT INTO "django_admin_log" VALUES(18,'2013-05-30 07:54:12.563646',1,26,'2','Health Journal: ''When to take exercise'' ',1,'');
+CREATE TABLE "tagging_tag" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "name" varchar(50) NOT NULL UNIQUE
+);
+INSERT INTO "tagging_tag" VALUES(1,'medication');
+CREATE TABLE "tagging_taggeditem" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "tag_id" integer NOT NULL REFERENCES "tagging_tag" ("id"),
+    "content_type_id" integer NOT NULL REFERENCES "django_content_type" ("id"),
+    "object_id" integer unsigned NOT NULL,
+    UNIQUE ("tag_id", "content_type_id", "object_id")
+);
+INSERT INTO "tagging_taggeditem" VALUES(1,1,26,1);
+CREATE TABLE "search_searchkeyword" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "keyword" varchar(50) NOT NULL
+);
+CREATE TABLE "django_comments" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "content_type_id" integer NOT NULL REFERENCES "django_content_type" ("id"),
+    "object_pk" text NOT NULL,
+    "site_id" integer NOT NULL REFERENCES "django_site" ("id"),
+    "user_id" integer REFERENCES "auth_user" ("id"),
+    "user_name" varchar(50) NOT NULL,
+    "user_email" varchar(75) NOT NULL,
+    "user_url" varchar(200) NOT NULL,
+    "comment" text NOT NULL,
+    "submit_date" datetime NOT NULL,
+    "ip_address" char(15),
+    "is_public" bool NOT NULL,
+    "is_removed" bool NOT NULL
+);
+CREATE TABLE "django_comment_flags" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "user_id" integer NOT NULL REFERENCES "auth_user" ("id"),
+    "comment_id" integer NOT NULL REFERENCES "django_comments" ("id"),
+    "flag" varchar(30) NOT NULL,
+    "flag_date" datetime NOT NULL,
+    UNIQUE ("user_id", "comment_id", "flag")
+);
+CREATE TABLE "django_flatpage_sites" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "flatpage_id" integer NOT NULL,
+    "site_id" integer NOT NULL REFERENCES "django_site" ("id"),
+    UNIQUE ("flatpage_id", "site_id")
+);
+INSERT INTO "django_flatpage_sites" VALUES(1,1,1);
+CREATE TABLE "django_flatpage" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "url" varchar(100) NOT NULL,
+    "title" varchar(200) NOT NULL,
+    "content" text NOT NULL,
+    "enable_comments" bool NOT NULL,
+    "template_name" varchar(70) NOT NULL,
+    "registration_required" bool NOT NULL
+);
+INSERT INTO "django_flatpage" VALUES(1,'/about/','About Us','My first About Us Content',1,'',0);
+CREATE TABLE "coltrane_category" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "title" varchar(250) NOT NULL,
+    "slug" varchar(50) NOT NULL UNIQUE,
+    "description" text NOT NULL
+);
+CREATE TABLE "coltrane_entry_categories" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "entry_id" integer NOT NULL,
+    "category_id" integer NOT NULL REFERENCES "coltrane_category" ("id"),
+    UNIQUE ("entry_id", "category_id")
+);
+CREATE TABLE "coltrane_entry" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "title" varchar(250) NOT NULL,
+    "excerpt" text NOT NULL,
+    "body" text NOT NULL,
+    "pub_date" datetime NOT NULL,
+    "excerpt_html" text NOT NULL,
+    "body_html" text NOT NULL,
+    "author_id" integer NOT NULL REFERENCES "auth_user" ("id"),
+    "enable_comments" bool NOT NULL,
+    "featured" bool NOT NULL,
+    "slug" varchar(50) NOT NULL,
+    "status" integer NOT NULL,
+    "tags" varchar(255) NOT NULL
+);
+CREATE TABLE "coltrane_link" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "enable_comments" bool NOT NULL,
+    "post_elsewhere" bool NOT NULL,
+    "posted_by_id" integer NOT NULL REFERENCES "auth_user" ("id"),
+    "pub_date" datetime NOT NULL,
+    "slug" varchar(50) NOT NULL,
+    "title" varchar(250) NOT NULL,
+    "description" text NOT NULL,
+    "description_html" text NOT NULL,
+    "via_name" varchar(250) NOT NULL,
+    "via_url" varchar(200) NOT NULL,
+    "url" varchar(200) NOT NULL UNIQUE,
+    "tags" varchar(255) NOT NULL
+);
+CREATE TABLE "cab_language" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "name" varchar(100) NOT NULL,
+    "slug" varchar(50) NOT NULL UNIQUE,
+    "language_code" varchar(50) NOT NULL,
+    "mime_type" varchar(100) NOT NULL
+);
+CREATE TABLE "cab_snippet" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "title" varchar(255) NOT NULL,
+    "language_id" integer NOT NULL REFERENCES "cab_language" ("id"),
+    "author_id" integer NOT NULL REFERENCES "auth_user" ("id"),
+    "description" text NOT NULL,
+    "description_html" text NOT NULL,
+    "code" text NOT NULL,
+    "highlighted_code" text NOT NULL,
+    "pub_date" datetime NOT NULL,
+    "updated_date" datetime NOT NULL,
+    "tags" varchar(255) NOT NULL
+);
+CREATE TABLE "cab_bookmark" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "snippet_id" integer NOT NULL REFERENCES "cab_snippet" ("id"),
+    "user_id" integer NOT NULL REFERENCES "auth_user" ("id"),
+    "date" datetime NOT NULL
+);
+CREATE TABLE "cab_rating" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "snippet_id" integer NOT NULL REFERENCES "cab_snippet" ("id"),
+    "user_id" integer NOT NULL REFERENCES "auth_user" ("id"),
+    "rating" integer NOT NULL,
+    "date" datetime NOT NULL
+);
+CREATE TABLE "taggit_tag" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "name" varchar(100) NOT NULL UNIQUE,
+    "slug" varchar(100) NOT NULL UNIQUE
+);
+CREATE TABLE "taggit_taggeditem" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "tag_id" integer NOT NULL REFERENCES "taggit_tag" ("id"),
+    "object_id" integer NOT NULL,
+    "content_type_id" integer NOT NULL REFERENCES "django_content_type" ("id")
+);
+CREATE TABLE "upload_image" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "filename" varchar(255) NOT NULL,
+    "size" varchar(50) NOT NULL
+);
+CREATE TABLE "south_migrationhistory" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "app_name" varchar(255) NOT NULL,
+    "migration" varchar(255) NOT NULL,
+    "applied" datetime NOT NULL
+);
+CREATE TABLE "help_helpcategory" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "slug" varchar(50) NOT NULL UNIQUE,
+    "published" bool NOT NULL,
+    "order" real NOT NULL,
+    "parent_id" integer,
+    "title" varchar(255) NOT NULL
+);
+INSERT INTO "help_helpcategory" VALUES(1,'about',1,1.0,NULL,'medication');
+INSERT INTO "help_helpcategory" VALUES(2,'health-journal',1,1.0,NULL,'Health Journal');
+CREATE TABLE "help_helpitem" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "slug" varchar(50) NOT NULL UNIQUE,
+    "published" bool NOT NULL,
+    "order" real NOT NULL,
+    "category_id" integer NOT NULL REFERENCES "help_helpcategory" ("id"),
+    "heading" varchar(255) NOT NULL,
+    "body" text NOT NULL,
+    "denormed_search_terms" text,
+    "help_tags" varchar(255) NOT NULL
+);
+INSERT INTO "help_helpitem" VALUES(1,'how-take-medication',1,1.0,1,'How to take medication','How to take medication','how to take medication how to take medication medication','medication');
+INSERT INTO "help_helpitem" VALUES(2,'when-take-exercise',1,1.0,2,'When to take exercise','When to take exercise','when to take exercise when to take exercise health journal','');
+CREATE INDEX "auth_permission_37ef4eb4" ON "auth_permission" ("content_type_id");
+CREATE INDEX "auth_group_permissions_5f412f9a" ON "auth_group_permissions" ("group_id");
+CREATE INDEX "auth_group_permissions_83d7f98b" ON "auth_group_permissions" ("permission_id");
+CREATE INDEX "auth_user_groups_6340c63c" ON "auth_user_groups" ("user_id");
+CREATE INDEX "auth_user_groups_5f412f9a" ON "auth_user_groups" ("group_id");
+CREATE INDEX "auth_user_user_permissions_6340c63c" ON "auth_user_user_permissions" ("user_id");
+CREATE INDEX "auth_user_user_permissions_83d7f98b" ON "auth_user_user_permissions" ("permission_id");
+CREATE INDEX "django_session_b7b81f0c" ON "django_session" ("expire_date");
+CREATE INDEX "django_admin_log_6340c63c" ON "django_admin_log" ("user_id");
+CREATE INDEX "django_admin_log_37ef4eb4" ON "django_admin_log" ("content_type_id");
+CREATE INDEX "tagging_taggeditem_5659cca2" ON "tagging_taggeditem" ("tag_id");
+CREATE INDEX "tagging_taggeditem_37ef4eb4" ON "tagging_taggeditem" ("content_type_id");
+CREATE INDEX "tagging_taggeditem_846f0221" ON "tagging_taggeditem" ("object_id");
+CREATE INDEX "django_comments_37ef4eb4" ON "django_comments" ("content_type_id");
+CREATE INDEX "django_comments_99732b5c" ON "django_comments" ("site_id");
+CREATE INDEX "django_comments_6340c63c" ON "django_comments" ("user_id");
+CREATE INDEX "django_comment_flags_6340c63c" ON "django_comment_flags" ("user_id");
+CREATE INDEX "django_comment_flags_3925f323" ON "django_comment_flags" ("comment_id");
+CREATE INDEX "django_comment_flags_9f00eb17" ON "django_comment_flags" ("flag");
+CREATE INDEX "django_flatpage_sites_872c4601" ON "django_flatpage_sites" ("flatpage_id");
+CREATE INDEX "django_flatpage_sites_99732b5c" ON "django_flatpage_sites" ("site_id");
+CREATE INDEX "django_flatpage_c379dc61" ON "django_flatpage" ("url");
+CREATE INDEX "coltrane_entry_categories_e8d920b6" ON "coltrane_entry_categories" ("entry_id");
+CREATE INDEX "coltrane_entry_categories_6f33f001" ON "coltrane_entry_categories" ("category_id");
+CREATE INDEX "coltrane_entry_e969df21" ON "coltrane_entry" ("author_id");
+CREATE INDEX "coltrane_entry_f52cfca0" ON "coltrane_entry" ("slug");
+CREATE INDEX "coltrane_link_5862c5f7" ON "coltrane_link" ("posted_by_id");
+CREATE INDEX "coltrane_link_f52cfca0" ON "coltrane_link" ("slug");
+CREATE INDEX "cab_snippet_784efa61" ON "cab_snippet" ("language_id");
+CREATE INDEX "cab_snippet_e969df21" ON "cab_snippet" ("author_id");
+CREATE INDEX "cab_bookmark_3b4feed5" ON "cab_bookmark" ("snippet_id");
+CREATE INDEX "cab_bookmark_6340c63c" ON "cab_bookmark" ("user_id");
+CREATE INDEX "cab_rating_3b4feed5" ON "cab_rating" ("snippet_id");
+CREATE INDEX "cab_rating_6340c63c" ON "cab_rating" ("user_id");
+CREATE INDEX "taggit_taggeditem_5659cca2" ON "taggit_taggeditem" ("tag_id");
+CREATE INDEX "taggit_taggeditem_846f0221" ON "taggit_taggeditem" ("object_id");
+CREATE INDEX "taggit_taggeditem_37ef4eb4" ON "taggit_taggeditem" ("content_type_id");
+CREATE INDEX "help_helpcategory_410d0aac" ON "help_helpcategory" ("parent_id");
+CREATE INDEX "help_helpitem_6f33f001" ON "help_helpitem" ("category_id");
+COMMIT;
