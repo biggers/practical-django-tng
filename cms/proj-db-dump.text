@@ -196,6 +196,9 @@ INSERT INTO "django_admin_log" VALUES(15,'2013-05-30 07:36:03.704646',1,25,'1','
 INSERT INTO "django_admin_log" VALUES(16,'2013-05-30 07:49:31.108345',1,26,'1','medication: ''How to take medication'' ',1,'');
 INSERT INTO "django_admin_log" VALUES(17,'2013-05-30 07:53:39.659502',1,25,'2','Health Journal',1,'');
 INSERT INTO "django_admin_log" VALUES(18,'2013-05-30 07:54:12.563646',1,26,'2','Health Journal: ''When to take exercise'' ',1,'');
+INSERT INTO "django_admin_log" VALUES(19,'2013-06-03 05:29:28.361380',1,25,'3','Walking',1,'');
+INSERT INTO "django_admin_log" VALUES(20,'2013-06-03 07:39:22.975587',1,26,'3','Health Journal: ''When you go for walking'' ',1,'');
+INSERT INTO "django_admin_log" VALUES(21,'2013-06-03 07:39:53.119208',1,26,'4','Health Journal: ''When you sleep'' ',1,'');
 CREATE TABLE "tagging_tag" (
     "id" integer NOT NULL PRIMARY KEY,
     "name" varchar(50) NOT NULL UNIQUE
@@ -360,6 +363,7 @@ CREATE TABLE "help_helpcategory" (
 );
 INSERT INTO "help_helpcategory" VALUES(1,'about',1,1.0,NULL,'medication');
 INSERT INTO "help_helpcategory" VALUES(2,'health-journal',1,1.0,NULL,'Health Journal');
+INSERT INTO "help_helpcategory" VALUES(3,'walking',1,1.0,2,'Walking');
 CREATE TABLE "help_helpitem" (
     "id" integer NOT NULL PRIMARY KEY,
     "slug" varchar(50) NOT NULL UNIQUE,
@@ -373,6 +377,8 @@ CREATE TABLE "help_helpitem" (
 );
 INSERT INTO "help_helpitem" VALUES(1,'how-take-medication',1,1.0,1,'How to take medication','How to take medication','how to take medication how to take medication medication','medication');
 INSERT INTO "help_helpitem" VALUES(2,'when-take-exercise',1,1.0,2,'When to take exercise','When to take exercise','when to take exercise when to take exercise health journal','');
+INSERT INTO "help_helpitem" VALUES(3,'when-you-go-walking',1,1.0,2,'When you go for walking','When you prefer to go for walking','when you go for walking when you prefer to go for walking health journal','');
+INSERT INTO "help_helpitem" VALUES(4,'when-you-sleep',1,1.0,2,'When you sleep','When you sleep','when you sleep when you sleep health journal','');
 CREATE INDEX "auth_permission_37ef4eb4" ON "auth_permission" ("content_type_id");
 CREATE INDEX "auth_group_permissions_5f412f9a" ON "auth_group_permissions" ("group_id");
 CREATE INDEX "auth_group_permissions_83d7f98b" ON "auth_group_permissions" ("permission_id");
