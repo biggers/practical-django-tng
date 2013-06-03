@@ -8,7 +8,7 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="/media/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
     {% block css %}{% endblock %}
     
     <style type="text/css">
@@ -16,43 +16,6 @@
         padding-top: 20px;
         padding-bottom: 60px;
       }
-
-      /* Custom container */
-      .container {
-        margin: 0 auto;
-        max-width: 1000px;
-      }
-      .container > hr {
-        margin: 60px 0;
-      }
-
-      /* Main marketing message and sign up button */
-      .jumbotron {
-        margin: 80px 0;
-        text-align: center;
-      }
-      .jumbotron h1 {
-        font-size: 100px;
-        line-height: 1;
-      }
-      .jumbotron .lead {
-        font-size: 24px;
-        line-height: 1.25;
-      }
-      .jumbotron .btn {
-        font-size: 21px;
-        padding: 14px 24px;
-      }
-
-      /* Supporting marketing content */
-      .marketing {
-        margin: 60px 0;
-      }
-      .marketing p + h4 {
-        margin-top: 28px;
-      }
-
-
       /* Customize the navbar links to be fill the entire space of the .navbar */
       .navbar .navbar-inner {
         padding: 0;
@@ -90,11 +53,6 @@
     <![endif]-->
 
     <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-                    <link rel="shortcut icon" href="../assets/ico/favicon.png">
   </head>
   <body>
 
@@ -118,14 +76,10 @@
         </div><!-- /.navbar -->
       </div>
 
-      <!-- Jumbotron 
-      <div class="jumbotron">
-      </div>-->
-      
+
       <!-- Example row of columns -->
-      <div class="bs-docs-grid">
+
           {% block base_content%}{% endblock %}
-      </div>
 
       <hr>
 
@@ -138,19 +92,8 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/media/js/jquery.js"></script>
-    <script src="/media/js/bootstrap-transition.js"></script>
-    <script src="/media/js/bootstrap-alert.js"></script>
-    <script src="/media/js/bootstrap-modal.js"></script>
-    <script src="/media/js/bootstrap-dropdown.js"></script>
-    <script src="/media/js/bootstrap-scrollspy.js"></script>
-    <script src="/media/js/bootstrap-tab.js"></script>
-    <script src="/media/js/bootstrap-tooltip.js"></script>
-    <script src="/media/js/bootstrap-popover.js"></script>
-    <script src="/media/js/bootstrap-button.js"></script>
-    <script src="/media/js/bootstrap-collapse.js"></script>
-    <script src="/media/js/bootstrap-carousel.js"></script>
-    <script src="/media/js/bootstrap-typeahead.js"></script>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
     {% block js %}{% endblock %}
 
   </body>
