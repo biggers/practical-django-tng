@@ -17,17 +17,32 @@ INSTALLED_APPS = settings.INSTALLED_APPS + (
     'django.contrib.markup',
     'django.contrib.comments',
     'django.contrib.syndication',
-    'django.contrib.flatpages',
+#    'django.contrib.flatpages',
     'coltrane',
     'django_pygments',
     'cab',
     'taggit',
     'flatpage_views',
     'help',
+    #for fluent contents
+    'fluent_contents',
+    'fluent_contents.plugins.code',
+    'fluent_contents.plugins.commentsarea',
+    'fluent_contents.plugins.disquswidgets',
+    'fluent_contents.plugins.formdesignerlink',
+    'fluent_contents.plugins.gist',
+    'fluent_contents.plugins.googledocsviewer',
+    'fluent_contents.plugins.iframe',
+    'fluent_contents.plugins.markup',
+    'fluent_contents.plugins.rawhtml',
+    'fluent_contents.plugins.text',
+    'disqus',
+    'django_wysiwyg',
+    'form_designer',
     # MUST be the last (after all apps!)
     'upload',
     'south',
-#    'flatpages_plus',
+    'flatpages_plus',
     'layouts',
 )
 MIDDLEWARE_CLASSES = settings.MIDDLEWARE_CLASSES + (
@@ -47,6 +62,8 @@ TINYMCE_DEFAULT_CONFIG = {
 
 TINYMCE_SPELLCHECKER = True
 TINYMCE_COMPRESSOR = True
+DISQUS_API_KEY = 'WiO5bxw1OfVJq4jLbi5HY96FkZEtn3Ju09Ua9egTQfo2Uty3JKFchzkcMRrJeVk4'
+DISQUS_WEBSITE_SHORTNAME = 'fhndemo.net'
 
 import os, sys
 
