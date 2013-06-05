@@ -46,7 +46,7 @@ ADMIN_MEDIA_PREFIX = '/admin_media/'
 #
 # Absolute path to the directory that holds static files.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = os.path.join(MEDIA_ROOT, 'static')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 # URL that handles the static files served from STATIC_ROOT.
 # Example: "http://media.lawrence.com/static/"
