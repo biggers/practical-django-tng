@@ -47,13 +47,14 @@ urlpatterns = patterns('',
     url(r'^upload/', include('upload.urls')),
     url('^help/', include('help.urls')),
 
-#    url('^help/', include('flatpage_views.urls')),
-#    url('^help/list/', include('flatpage_views.urls')),
+    url('^flatpage/', include('flatpages_plus.urls')),
+    url('^flatpage/list/', include('flatpages_plus.urls')),
+    url('^flatpage/update/', include('flatpages_plus.urls')),
 #    url(r'^pages/', include('layouts.urls')),
     url(r'^(?P<url>.*)/$', include('layouts.siteurls')),
 )
 
-urlpatterns += patterns('django.contrib.flatpages.views',
-    (r'^(?P<url>.*)$', 'flatpage'),
-)
+#urlpatterns += patterns('django.contrib.flatpages.views',
+    #(r'^(?P<url>.*)$', 'flatpage'),
+#)
 
