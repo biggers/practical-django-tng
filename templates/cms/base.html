@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
+	<script src="/static/tiny_mce/tiny_mce.js"></script>
     <!-- Le styles -->
     <link href="/static/css/bootstrap.css" rel="stylesheet">
     {% block css %}{% endblock %}
@@ -67,7 +67,8 @@
                 <li class="{% if 'weblog' in request.path %}active{% endif %}"><a href="/weblog">Home</a></li>
                 <li class="{% if 'upload' in request.path %}active{% endif %}"><a href="/upload">Upload</a></li>
                 <li class="{% if 'search' in request.path %}active{% endif %}"><a href="/search">Search</a></li>
-                <li class="{% if 'pages' in request.path %}active{% endif %}"><a href="/help/">Help Pages</a></li>
+                <li class="{% if 'pages' in request.path %}active{% endif %}"><a href="/help">Help Pages</a></li>
+                <li class="{% if 'pages' in request.path %}active{% endif %}"><a href="/flatpage/list">Flat Pages</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
               </ul>
