@@ -24,21 +24,6 @@ INSTALLED_APPS = settings.INSTALLED_APPS + (
     'taggit',
     'flatpage_views',
     'help',
-    #for fluent contents
-    'fluent_contents',
-    'fluent_contents.plugins.code',
-    'fluent_contents.plugins.commentsarea',
-    'fluent_contents.plugins.disquswidgets',
-    'fluent_contents.plugins.formdesignerlink',
-    'fluent_contents.plugins.gist',
-    'fluent_contents.plugins.googledocsviewer',
-    'fluent_contents.plugins.iframe',
-    'fluent_contents.plugins.markup',
-    'fluent_contents.plugins.rawhtml',
-    'fluent_contents.plugins.text',
-    'disqus',
-    'django_wysiwyg',
-    'form_designer',
     # MUST be the last (after all apps!)
     'upload',
     'south',
@@ -54,16 +39,22 @@ MIDDLEWARE_CLASSES = settings.MIDDLEWARE_CLASSES + (
 #MIDDLEWARE_CLASSES = settings.MIDDLEWARE_CLASSES  + (
 #    'flatpages_plus.middleware.FlatpageFallbackMiddleware',
 #)
-
+TINYMCE_JS_URL = os.path.join(settings.STATIC_ROOT,  'tiny_mce/tiny_mce.js');
+TINYMCE_JS_ROOT = os.path.join(settings.STATIC_ROOT, "tiny_mce/")
 TINYMCE_DEFAULT_CONFIG = {
     'plugins': "table,spellchecker,paste,searchreplace",
     'theme': "advanced",
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 10,
+    'mode': "exact",
+    'height': "350px",
+    'width': "653px",
 }
 
 TINYMCE_SPELLCHECKER = True
 TINYMCE_COMPRESSOR = True
-DISQUS_API_KEY = 'WiO5bxw1OfVJq4jLbi5HY96FkZEtn3Ju09Ua9egTQfo2Uty3JKFchzkcMRrJeVk4'
-DISQUS_WEBSITE_SHORTNAME = 'fhndemo.net'
+#DISQUS_API_KEY = 'WiO5bxw1OfVJq4jLbi5HY96FkZEtn3Ju09Ua9egTQfo2Uty3JKFchzkcMRrJeVk4'
+#DISQUS_WEBSITE_SHORTNAME = 'fhndemo.net'
 
 import os, sys
 
