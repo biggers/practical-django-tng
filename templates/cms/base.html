@@ -67,10 +67,9 @@
                 <li class="{% if 'weblog' in request.path %}active{% endif %}"><a href="/weblog">Home</a></li>
                 <li class="{% if 'upload' in request.path %}active{% endif %}"><a href="/upload">Upload</a></li>
                 <li class="{% if 'search' in request.path %}active{% endif %}"><a href="/search">Search</a></li>
-                <li class="{% if 'pages' in request.path %}active{% endif %}"><a href="/help">Help Pages</a></li>
-                <li class="{% if 'pages' in request.path %}active{% endif %}"><a href="/flatpage/list">Flat Pages</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/about/contact">Contact</a></li>
+                <li class="{% if 'help' in request.path %}active{% endif %}"><a href="/help/list">Help Pages</a></li>
+                <li class="{% if 'about' in request.path and 'contact' not in request.path %}active{% endif %}"><a href="/about">About</a></li>
+                <li class="{% if 'contact' in request.path %}active{% endif %}"><a href="/about/contact">Contact</a></li>
               </ul>
             </div>
           </div>
@@ -79,9 +78,9 @@
 
 
       <!-- Example row of columns -->
-
+      <div class="row-fluid show-grid">
           {% block base_content%}{% endblock %}
-
+      </div>
       <hr>
 
       <div class="footer">
