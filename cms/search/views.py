@@ -10,7 +10,7 @@ def search(request):
     keyword_results = results = []
     if query:
 #        keyword_results = FlatPage.objects.filter(searchkeyword__keyword__in=query.split()).distinct()
-        if keyword_results.count() == 1:
+        if len(keyword_results) == 1:
             return HttpResponseRedirect(keyword_results[0].get_absolute_url())
 #        results = FlatPage.objects.filter(content__icontains=query)'''
 
