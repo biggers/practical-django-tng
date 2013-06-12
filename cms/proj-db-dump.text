@@ -121,7 +121,7 @@ CREATE TABLE "auth_user" (
     "is_active" bool NOT NULL,
     "date_joined" datetime NOT NULL
 );
-INSERT INTO "auth_user" VALUES(1,'pbkdf2_sha256$10000$WTJPGMpqCUbF$R6DkvteAKwaO3Dtpawo3ZbZIr3FtH6+WDahXM8M1sc8=','2013-06-06 07:21:43.997480',1,'admin','','','adm@admin.com',1,1,'2013-06-06 06:48:57.005988');
+INSERT INTO "auth_user" VALUES(1,'pbkdf2_sha256$10000$WTJPGMpqCUbF$R6DkvteAKwaO3Dtpawo3ZbZIr3FtH6+WDahXM8M1sc8=','2013-06-12 02:15:16.380126',1,'admin','','','adm@admin.com',1,1,'2013-06-06 06:48:57.005988');
 CREATE TABLE "django_content_type" (
     "id" integer NOT NULL PRIMARY KEY,
     "name" varchar(100) NOT NULL,
@@ -161,7 +161,7 @@ CREATE TABLE "django_session" (
     "expire_date" datetime NOT NULL
 );
 INSERT INTO "django_session" VALUES('ewexgh2ikzvew9mnnjfown2afrykl8ax','YTc2MzIxNjBmNmE2YTcyZTU3OGZjNWQzZGNlYTM3ZDU3MzA2N2ZkMTqAAn1xAS4=','2013-06-20 06:49:20.722018');
-INSERT INTO "django_session" VALUES('b19c23ekpylqouwacf59xm1to1v1uoa0','MzBmYzQxMDU2MDY4MTdiYmY0YWI5Y2VmZjZlZTM0ZjA2NmQ1NDA0MzqAAn1xAShVEl9hdXRoX3VzZXJfYmFja2VuZHECVSlkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZHEDVQ1fYXV0aF91c2VyX2lkcQRLAXUu','2013-06-20 07:21:44.082000');
+INSERT INTO "django_session" VALUES('tad9qxfahifh4uk8aru7v6qw5b9x4eqq','MzBmYzQxMDU2MDY4MTdiYmY0YWI5Y2VmZjZlZTM0ZjA2NmQ1NDA0MzqAAn1xAShVEl9hdXRoX3VzZXJfYmFja2VuZHECVSlkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZHEDVQ1fYXV0aF91c2VyX2lkcQRLAXUu','2013-06-26 02:15:16.473163');
 CREATE TABLE "django_site" (
     "id" integer NOT NULL PRIMARY KEY,
     "domain" varchar(100) NOT NULL,
@@ -200,6 +200,8 @@ INSERT INTO "django_admin_log" VALUES(19,'2013-06-07 05:34:00.725001',1,26,'4','
 INSERT INTO "django_admin_log" VALUES(20,'2013-06-07 05:34:00.808195',1,26,'2','/about/ -- asfd',3,'');
 INSERT INTO "django_admin_log" VALUES(21,'2013-06-07 05:34:00.899829',1,26,'5','/about/contact/ -- testing',3,'');
 INSERT INTO "django_admin_log" VALUES(22,'2013-06-07 05:34:00.991514',1,26,'3','/test1/ -- asdf',3,'');
+INSERT INTO "django_admin_log" VALUES(23,'2013-06-10 03:07:12.678986',1,13,'1','test',1,'');
+INSERT INTO "django_admin_log" VALUES(24,'2013-06-10 03:07:34.853116',1,14,'1','My first weblog test entry',1,'');
 CREATE TABLE "tagging_tag" (
     "id" integer NOT NULL PRIMARY KEY,
     "name" varchar(50) NOT NULL UNIQUE
@@ -244,12 +246,14 @@ CREATE TABLE "coltrane_category" (
     "slug" varchar(50) NOT NULL UNIQUE,
     "description" text NOT NULL
 );
+INSERT INTO "coltrane_category" VALUES(1,'test','test','test');
 CREATE TABLE "coltrane_entry_categories" (
     "id" integer NOT NULL PRIMARY KEY,
     "entry_id" integer NOT NULL,
     "category_id" integer NOT NULL REFERENCES "coltrane_category" ("id"),
     UNIQUE ("entry_id", "category_id")
 );
+INSERT INTO "coltrane_entry_categories" VALUES(1,1,1);
 CREATE TABLE "coltrane_entry" (
     "id" integer NOT NULL PRIMARY KEY,
     "title" varchar(250) NOT NULL,
@@ -265,6 +269,7 @@ CREATE TABLE "coltrane_entry" (
     "status" integer NOT NULL,
     "tags" varchar(255) NOT NULL
 );
+INSERT INTO "coltrane_entry" VALUES(1,'My first weblog test entry','My first weblog test entry','My first weblog test entry','2013-06-10 03:07:00','<p>My first weblog test entry</p>','<p>My first weblog test entry</p>',1,1,0,'my-first-weblog-test-entry',1,'');
 CREATE TABLE "coltrane_link" (
     "id" integer NOT NULL PRIMARY KEY,
     "enable_comments" bool NOT NULL,
@@ -326,16 +331,23 @@ INSERT INTO "taggit_tag" VALUES(5,'check-in','check-in');
 INSERT INTO "taggit_tag" VALUES(6,'account-info','account-info');
 INSERT INTO "taggit_tag" VALUES(7,'Event','event');
 INSERT INTO "taggit_tag" VALUES(8,'Care','care');
+INSERT INTO "taggit_tag" VALUES(9,'about','about');
+INSERT INTO "taggit_tag" VALUES(10,'us','us');
+INSERT INTO "taggit_tag" VALUES(11,'contact','contact');
 CREATE TABLE "taggit_taggeditem" (
     "id" integer NOT NULL PRIMARY KEY,
     "tag_id" integer NOT NULL REFERENCES "taggit_tag" ("id"),
     "object_id" integer NOT NULL,
     "content_type_id" integer NOT NULL REFERENCES "django_content_type" ("id")
 );
-INSERT INTO "taggit_taggeditem" VALUES(1,5,1,26);
-INSERT INTO "taggit_taggeditem" VALUES(2,6,2,26);
-INSERT INTO "taggit_taggeditem" VALUES(3,8,3,26);
-INSERT INTO "taggit_taggeditem" VALUES(4,7,3,26);
+INSERT INTO "taggit_taggeditem" VALUES(1,8,3,26);
+INSERT INTO "taggit_taggeditem" VALUES(2,7,3,26);
+INSERT INTO "taggit_taggeditem" VALUES(5,10,5,26);
+INSERT INTO "taggit_taggeditem" VALUES(6,11,5,26);
+INSERT INTO "taggit_taggeditem" VALUES(7,10,6,26);
+INSERT INTO "taggit_taggeditem" VALUES(8,11,6,26);
+INSERT INTO "taggit_taggeditem" VALUES(9,9,4,26);
+INSERT INTO "taggit_taggeditem" VALUES(10,10,4,26);
 CREATE TABLE "help_helpcategory" (
     "id" integer NOT NULL PRIMARY KEY,
     "slug" varchar(50) NOT NULL UNIQUE,
@@ -360,6 +372,7 @@ CREATE TABLE "upload_image" (
     "filename" varchar(255) NOT NULL,
     "size" varchar(50) NOT NULL
 );
+INSERT INTO "upload_image" VALUES(1,'8be3c7d7-a526-4c02-bacc-e3fd2b7d41a3-lic.pdf','58927');
 CREATE TABLE "south_migrationhistory" (
     "id" integer NOT NULL PRIMARY KEY,
     "app_name" varchar(255) NOT NULL,
@@ -372,9 +385,10 @@ CREATE TABLE "flatpages_plus_flatpage_sites" (
     "site_id" integer NOT NULL REFERENCES "django_site" ("id"),
     UNIQUE ("flatpage_id", "site_id")
 );
-INSERT INTO "flatpages_plus_flatpage_sites" VALUES(1,1,1);
-INSERT INTO "flatpages_plus_flatpage_sites" VALUES(2,2,1);
-INSERT INTO "flatpages_plus_flatpage_sites" VALUES(3,3,1);
+INSERT INTO "flatpages_plus_flatpage_sites" VALUES(1,3,1);
+INSERT INTO "flatpages_plus_flatpage_sites" VALUES(3,5,1);
+INSERT INTO "flatpages_plus_flatpage_sites" VALUES(4,6,1);
+INSERT INTO "flatpages_plus_flatpage_sites" VALUES(5,4,1);
 CREATE TABLE "flatpages_plus_flatpage" (
     "id" integer NOT NULL PRIMARY KEY,
     "url" varchar(150) NOT NULL,
@@ -391,18 +405,18 @@ CREATE TABLE "flatpages_plus_flatpage" (
     "created" datetime,
     "modified" datetime
 );
-INSERT INTO "flatpages_plus_flatpage" VALUES(1,'/check-in/','Check-in','check-in','<h1>Check In</h1>
-<p>&nbsp;</p>
-<p>The Check In feature helps give you peace of mind by allowing you to set check-in times for your caree. You could for example request that they check-in once in the morning and once at night. Then you can see the results of the check-in here. You will need to setup and activate check-in times before we will start asking your caree to check-in, just click the "add check in time for" link under the check-in tab to get started. The Check-in schedule will start the next time your caree''s computer connects to our servers.</p>
-<p><br />To Learn More, Watch A Video Tutorial, Or See What The Person You Care For Sees, <a href="http://www.familyhealthnetwork.com/help/tiki-index.php?page=Check-In" target="_blank">click here.</a></p>
-<p>&nbsp;</p>',1,0,'p','FHN Checkin page',0,'',0,'2013-06-07 05:51:51.972727','2013-06-07 05:51:51.972773');
-INSERT INTO "flatpages_plus_flatpage" VALUES(2,'/account-info/','Account info','account-info','<h1>Account Info</h1>
-<p>This section contains your personal account information. This information is made available to people in your circle and to your caree. For example if you set your phone number here, your caree will be able to look you up in their photo directory when they want to call you.</p>
-<p>To Learn More, Watch A Video Tutorial, Or See What The Person You Care For Sees, <a href="https://www.familyhealthnetwork.com/caregiver/admin/helps/edit/id/2">click here.</a></p>
-<p>&nbsp;</p>',1,0,'p','FHN Account info details',0,'',0,'2013-06-07 05:53:30.892925','2013-06-07 05:53:41.204893');
 INSERT INTO "flatpages_plus_flatpage" VALUES(3,'/care-event/','Care Event','care-event','<h1>Care Event</h1>
 <p>&nbsp;</p>
-<p>This your next upcoming care event. A care event is a time you have agreed to do something for a caree. An example would be you have signed up to call your Grandmother every Thursday. To learn more about care events and how they work please check out the calendar section.</p>',1,0,'p','FHN Care Events',0,'',0,'2013-06-07 06:24:45.006825','2013-06-07 06:25:00.862224');
+<p>This your next upcoming care event. A care event is a time you have agreed to do something for a caree. An example would be you have signed up to call your Grandmother every Thursday. To learn more about care events and how they work please check out the calendar section.</p>',1,1,'p','FHN Care Events',0,'',0,'2013-06-07 06:24:45.006825','2013-06-12 05:46:52.671495');
+INSERT INTO "flatpages_plus_flatpage" VALUES(4,'/about/','About Us','about-us','<h1>About Us</h1>
+<p>&nbsp;</p>
+<p>&nbsp;&nbsp; It''s about us page</p>',1,0,'p','about-su',0,'',0,'2013-06-12 07:18:00.826793','2013-06-12 07:23:57.849899');
+INSERT INTO "flatpages_plus_flatpage" VALUES(5,'/contact/','Contact Us','contact-us','<h1>Contact Us</h1>
+<p>&nbsp;</p>
+<p>&nbsp; Use my email shaijudavis@gmail.com to contact me</p>',1,0,'d','Contact Us',0,'',0,'2013-06-12 07:19:05.851518','2013-06-12 07:19:05.851545');
+INSERT INTO "flatpages_plus_flatpage" VALUES(6,'/about/contact/','Contact Us','contact-us','<h1>Contact Us</h1>
+<p>&nbsp;</p>
+<p>&nbsp;New page</p>',1,0,'d','contact us',0,'',0,'2013-06-12 07:23:34.574274','2013-06-12 07:23:34.574310');
 CREATE INDEX "auth_permission_37ef4eb4" ON "auth_permission" ("content_type_id");
 CREATE INDEX "auth_group_permissions_5f412f9a" ON "auth_group_permissions" ("group_id");
 CREATE INDEX "auth_group_permissions_83d7f98b" ON "auth_group_permissions" ("permission_id");
